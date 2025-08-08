@@ -1,103 +1,211 @@
-import Image from "next/image";
+// app/page.tsx
+"use client"; // This component will run on the client-side
+
+import { Image } from "@imagekit/next";
+import React from "react"; // Import React for JSX
+import {
+  IMAGEKIT_URL_ENDPOINT,
+  aboutImage1Src,
+  galleryImage1Src,
+  galleryImage2Src,
+  galleryImage3Src,
+  galleryImagefixedSrc,
+  galleryImage4Src,
+  galleryImage5Src,
+  galleryImage6Src,
+} from "@/utils/imagekit-images";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <div className="relative w-full h-[60vh] overflow-hidden">
+        {aboutImage1Src && (
+          <Image
+            urlEndpoint={IMAGEKIT_URL_ENDPOINT}
+            src={aboutImage1Src}
+            alt="A premium and Authentic Restaurant Interior"
+            width={1920}
+            height={1080}
+            priority
+            className="absolute inset-0 w-full h-full object-cover rounded-b-[40px]"
+          />
+        )}
+        <div className="absolute inset-0 bg-[rgba(20,31,45,0.8)] z-10"></div>
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-8">
+          <h2 className="yeseva-one text-[80px] leading-[1.1] text-[rgb(239,167,101)] text-6xl md:text-8xl font-bold drop-shadow-lg">
+            A premium <br /> and Authentic <br /> Restaurant
+          </h2>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+
+      <section className="flex flex-col lg:flex-row items-center justify-center p-8 lg:p-16 bg-[#141f2d] gap-10 lg:gap-20">
+        <div className="lg:w-1/2 w-full rounded-lg overflow-hidden shadow-xl border border-[#efa765]">
+          {galleryImage1Src && (
+            <Image
+              urlEndpoint={IMAGEKIT_URL_ENDPOINT}
+              src={galleryImage1Src}
+              alt="Inviting outdoor dining area with lush greenery"
+              width={800}
+              height={500}
+              className="w-full h-auto object-cover rounded-lg"
+            />
+          )}
+        </div>
+        <div className="lg:w-1/2 w-full text-center lg:text-left p-4">
+          <h3 className="yeseva-one second-heading text-4xl md:text-5xl font-bold mb-4 text-[rgb(239,167,101)] drop-shadow-md">
+            Architectural Brilliance
+          </h3>
+          <p className="text-gray-300 text-lg leading-relaxed text-justify">
+            Our restaurant is a contemporary masterpiece, encased in a
+            magnificent glass facade with graceful arches. This transparent
+            structure invites you into a sophisticated ambiance, where design
+            and culinary art converge for an extraordinary dining experience
+          </p>
+        </div>
+      </section>
+
+      <section className="flex flex-col lg:flex-row-reverse items-center justify-center p-8 lg:p-16 bg-[#141f2d] gap-10 lg:gap-20">
+        <div className="lg:w-1/2 w-full rounded-lg overflow-hidden shadow-xl border border-[#efa765]">
+          {galleryImage2Src && (
+            <Image
+              urlEndpoint={IMAGEKIT_URL_ENDPOINT}
+              src={galleryImage2Src}
+              alt="Elegant restaurant interior with modern design"
+              width={800}
+              height={500}
+              className="w-full h-auto object-cover rounded-lg"
+            />
+          )}
+        </div>
+        <div className="lg:w-1/2 w-full text-center lg:text-right p-4">
+          <h3 className="yeseva-one second-heading text-4xl md:text-5xl font-bold mb-4 text-[rgb(239,167,101)] drop-shadow-md">
+            Luminous Interior Comfort
+          </h3>
+          <p className="text-gray-300 text-lg leading-relaxed text-justify">
+            Step into a captivating ambiance where exquisite lighting, from our
+            innovative ceiling to plush seating, illuminates every detail. Our
+            meticulously planned arrangements offer intimate nooks and vibrant
+            communal spaces, ensuring your perfect spot.
+          </p>
+        </div>
+      </section>
+
+      <section className="flex flex-col lg:flex-row items-center justify-center p-8 lg:p-16 bg-[#141f2d] gap-10 lg:gap-20">
+        <div className="lg:w-1/2 w-full rounded-lg overflow-hidden shadow-xl border border-[#efa765]">
+          {galleryImage3Src && (
+            <Image
+              urlEndpoint={IMAGEKIT_URL_ENDPOINT}
+              src={galleryImage3Src}
+              alt="Inviting outdoor dining area with lush greenery"
+              width={800}
+              height={500}
+              className="w-full h-auto object-cover rounded-lg"
+            />
+          )}
+        </div>
+        <div className="lg:w-1/2 w-full text-center lg:text-left p-4">
+          <h3 className="yeseva-one second-heading text-4xl md:text-5xl font-bold mb-4 text-[rgb(239,167,101)] drop-shadow-md">
+            Swift Culinary Delivery
+          </h3>
+          <p className="text-gray-300 text-lg leading-relaxed text-justify">
+            Enjoy our home delivery service, bringing your favorite dishes with
+            best behavior and on-time punctuality. Get fresh, hot meals and
+            exclusive discounts, extending our hospitality straight to your
+            table
+          </p>
+        </div>
+      </section>
+      <section className="flex flex-col lg:flex-row items-center justify-center bg-[#141f2d]">
+        <div className="w-full overflow-hidden shadow-xl">
+          {galleryImagefixedSrc && (
+            <Image
+              urlEndpoint={IMAGEKIT_URL_ENDPOINT}
+              src={galleryImagefixedSrc}
+              alt="Inviting outdoor dining area with lush greenery"
+              width={1000}
+              height={500}
+              className="w-full h-[60vh] md:h-[75vh] object-cover"
+            />
+          )}
+        </div>
+      </section>
+
+      <section className="flex flex-col lg:flex-row-reverse items-center justify-center p-8 lg:p-16 bg-[#141f2d] gap-10 lg:gap-20">
+        <div className="lg:w-1/2 w-full rounded-lg overflow-hidden shadow-xl border border-[#efa765]">
+          {galleryImage4Src && (
+            <Image
+              urlEndpoint={IMAGEKIT_URL_ENDPOINT}
+              src={galleryImage4Src}
+              alt="Elegant restaurant interior with modern design"
+              width={800}
+              height={500}
+              className="w-full h-auto object-cover rounded-lg"
+            />
+          )}
+        </div>
+        <div className="lg:w-1/2 w-full text-center lg:text-right p-4">
+          <h3 className="yeseva-one second-heading text-4xl md:text-5xl font-bold mb-4 text-[rgb(239,167,101)] drop-shadow-md">
+            Sensory Culinary Journey
+          </h3>
+          <p className="text-gray-300 text-lg leading-relaxed text-justify">
+            Prepare for an extraordinary experience with our delicious,
+            meticulously crafted food, bursting with unparalleled taste. We
+            create memorable user experiences, ensuring each bite is pure
+            enjoyment from first aroma to the last
+          </p>
+        </div>
+      </section>
+      <section className="flex flex-col lg:flex-row items-center justify-center p-8 lg:p-16 bg-[#141f2d] gap-10 lg:gap-20">
+        <div className="lg:w-1/2 w-full rounded-lg overflow-hidden shadow-xl border border-[#efa765]">
+          {galleryImage5Src && (
+            <Image
+              urlEndpoint={IMAGEKIT_URL_ENDPOINT}
+              src={galleryImage5Src}
+              alt="Inviting outdoor dining area with lush greenery"
+              width={800}
+              height={500}
+              className="w-full h-auto object-cover rounded-lg"
+            />
+          )}
+        </div>
+        <div className="lg:w-1/2 w-full text-center lg:text-left p-4">
+          <h3 className="yeseva-one second-heading text-4xl md:text-5xl font-bold mb-4 text-[rgb(239,167,101)] drop-shadow-md">
+            Grand Dining Celebration Space
+          </h3>
+          <p className="text-gray-300 text-lg leading-relaxed text-justify">
+            Our magnificent dinner area is designed for gatherings of any scale,
+            offering vast, flexible arrangements to comfortably accommodate a
+            large number of guests. Experience spacious elegance and perfect
+            planning, making every meal a grand occasion.
+          </p>
+        </div>
+      </section>
+
+      <section className="flex flex-col lg:flex-row-reverse items-center justify-center p-8 lg:p-16 bg-[#141f2d] gap-10 lg:gap-20">
+        <div className="lg:w-1/2 w-full rounded-lg overflow-hidden shadow-xl border border-[#efa765]">
+          {galleryImage6Src && (
+            <Image
+              urlEndpoint={IMAGEKIT_URL_ENDPOINT}
+              src={galleryImage6Src}
+              alt="Elegant restaurant interior with modern design"
+              width={800}
+              height={500}
+              className="w-full h-auto object-cover rounded-lg"
+            />
+          )}
+        </div>
+        <div className="lg:w-1/2 w-full text-center lg:text-right p-4">
+          <h3 className="yeseva-one second-heading text-4xl md:text-5xl font-bold mb-4 text-[rgb(239,167,101)] drop-shadow-md">
+            Open-Air Oasis Dining
+          </h3>
+          <p className="text-gray-300 text-lg leading-relaxed text-justify">
+            Step into our enchanting open-air dining area, where lush greenery
+            and vibrant ground create a serene oasis. Savor exquisite meals
+            amidst nature is tranquility under beautiful weather. It is the
+            perfect refreshing escape
+          </p>
+        </div>
+      </section>
+    </>
   );
 }

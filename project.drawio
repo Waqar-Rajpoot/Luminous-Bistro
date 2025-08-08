@@ -1,0 +1,58 @@
+<mxfile host="65bd71144e">
+    <diagram id="x9_wUipL3wbXLVU568GH" name="Page-1">
+        <mxGraphModel dx="1072" dy="475" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="#FFFFFF" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;home,&lt;/font&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;menu,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;about,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;book a table&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;contact,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;signin&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;signup,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;reviews,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;product,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;userDashboard,&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="38" y="599" width="200" height="224" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="edgeStyle=none;html=1;fontSize=16;" parent="1" source="3" target="2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;font&gt;&lt;b&gt;public pages&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="81" y="543" width="116" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;HOME STEAK&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="372" y="372" width="175" height="41" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;font&gt;userModel,&lt;/font&gt;&lt;div&gt;&lt;font&gt;bookTableMedel,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;contactModel,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;reviewsMedel,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;createProductMedel,&lt;/span&gt;&lt;font&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;orderMedel&lt;/span&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="488" y="618" width="154" height="164" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="edgeStyle=none;html=1;fontSize=16;" parent="1" source="7" target="6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="&lt;font&gt;&lt;b&gt;models&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="530.5" y="550" width="74" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="&lt;font&gt;userSchema,&lt;/font&gt;&lt;div&gt;&lt;font&gt;bookTableSchema,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;contactSchema,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;reviewSchema&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="659.5" y="620" width="161.5" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="edgeStyle=none;html=1;fontSize=16;" parent="1" source="10" target="9" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;font&gt;&lt;b&gt;zod schemas&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontColor=#FFFFFF;labelBackgroundColor=#FFFFFF;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="682.75" y="557" width="118" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&lt;div&gt;&lt;span&gt;Dashboard,&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;order management,&lt;/span&gt;&lt;/div&gt;&lt;div&gt;menu management,&lt;/div&gt;&lt;div&gt;reservations management,&lt;/div&gt;&lt;div&gt;reviews management,&lt;/div&gt;&lt;div&gt;permotion &amp;amp; discounts,&lt;/div&gt;&lt;div&gt;customer management,&lt;/div&gt;&lt;div&gt;reporting &amp;amp; analytics,&lt;/div&gt;&lt;div&gt;settings &amp;amp; configurations&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="259" y="599" width="200" height="227" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="edgeStyle=none;html=1;fontSize=16;" parent="1" source="14" target="12" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="&lt;font&gt;&lt;b&gt;admin pages&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="302" y="543" width="116" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="15" target="20">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;User&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="123" y="1033" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Book a table,&lt;/font&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;Contact msg,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;Review,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;buy product&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="322" y="921.5" width="196" height="303" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
