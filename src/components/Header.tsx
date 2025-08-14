@@ -272,7 +272,7 @@ import { LogOut, LayoutDashboard } from "lucide-react";
 // Extend the NextAuth User type to include your custom 'role' property
 declare module "next-auth" {
   interface User {
-    role?: "user" | "admin" | "manager";
+    role?: "user" | "admin" | "manager" | "staff";
     username?: string | null;
   }
 }
@@ -314,9 +314,11 @@ export default function Header() {
       case "admin":
         return { href: "/admin", text: "Admin Panel" };
       case "manager":
-        return { href: "/manager", text: "Manager Dashboard" };
+        return { href: "/manager-dashboard", text: "Manager Dashboard" };
       case "user":
-        return { href: "/user", text: "My Dashboard" };
+        return { href: "/user-dashboard", text: "My Dashboard" };
+      case "staff":
+        return { href: "/staff-dashboard", text: "Staff Dashboard" };
       default:
         return null;
     }

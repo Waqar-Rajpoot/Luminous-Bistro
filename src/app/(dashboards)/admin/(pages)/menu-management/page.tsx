@@ -173,15 +173,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
 // "use client";
 
 // import React, { useState } from "react";
@@ -203,7 +194,7 @@
 // import { Input } from "@/components/ui/input";
 // import { Button } from "@/components/ui/button";
 
-// import FileUpload from "@/components/MediaUploader"; 
+// import FileUpload from "@/components/MediaUploader";
 // import { menuSchema } from "@/schemas/menuSchema";
 
 // type ProductFormInputs = z.infer<typeof menuSchema>;
@@ -271,8 +262,8 @@
 //                 <FormItem>
 //                   <FormLabel className="text-[#efa765]">Item Category</FormLabel>
 //                   <FormControl>
-//                     <Input placeholder="Burgers" 
-//                     {...field} 
+//                     <Input placeholder="Burgers"
+//                     {...field}
 //                     required
 //                     />
 //                   </FormControl>
@@ -522,7 +513,7 @@
 //                 backgroundColor: "rgb(239, 167, 101)",
 //                 color: "rgb(20, 31, 45)",
 //               }}
-//               disabled={isSubmitting} 
+//               disabled={isSubmitting}
 //             >
 //               {isSubmitting ? (
 //                 <>
@@ -539,15 +530,6 @@
 //     </div>
 //   );
 // }
-
-
-
-
-
-
-
-
-
 
 // // src/app/admin/menu-management/page.tsx
 // "use client";
@@ -1132,13 +1114,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
 // src/app/admin/menu-management/page.tsx
 "use client";
 
@@ -1147,7 +1122,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
-import { Loader2, PlusCircle, Edit, Trash2, MoreHorizontal } from "lucide-react";
+import {
+  Loader2,
+  PlusCircle,
+  Edit,
+  Trash2,
+  MoreHorizontal,
+} from "lucide-react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
@@ -1206,7 +1187,7 @@ import FileUpload from "@/components/MediaUploader";
 // Import schema and type from your file - Adjust path as needed
 import { menuSchema, MenuFormInputs } from "@/schemas/menuSchema";
 // Import the Mongoose interface for better typing - Adjust path as needed
-import { IMenu } from '@/models/Menu.model'; // Assuming IMenu is in this path
+import { IMenu } from "@/models/Menu.model"; // Assuming IMenu is in this path
 
 // Define a client-side type for a menu item, extending IMenu with _id which Mongoose adds
 type MenuItem = IMenu & { _id: string };
@@ -1221,7 +1202,9 @@ export default function MenuManagementPage() {
   // State for Menu Deletion Confirmation Dialog
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [menuToDeleteId, setMenuToDeleteId] = useState<string | null>(null);
-  const [menuToDeleteCategory, setMenuToDeleteCategory] = useState<string | null>(null);
+  const [menuToDeleteCategory, setMenuToDeleteCategory] = useState<
+    string | null
+  >(null);
 
   // React Hook Form for Menu Management (Add/Edit)
   const menuForm = useForm<MenuFormInputs>({
@@ -1251,7 +1234,11 @@ export default function MenuManagementPage() {
         throw new Error(response.data.message || "Failed to fetch menus.");
       }
     } catch (error: any) {
-      toast.error(error.response?.data?.message || error.message || "Failed to load menus.");
+      toast.error(
+        error.response?.data?.message ||
+          error.message ||
+          "Failed to load menus."
+      );
       console.error("Error fetching menus:", error);
     } finally {
       setLoadingMenus(false);
@@ -1268,7 +1255,8 @@ export default function MenuManagementPage() {
 
   const handleAddNewMenuClick = () => {
     setEditingMenu(null); // Clear any editing state
-    menuForm.reset({ // Reset to default values for adding
+    menuForm.reset({
+      // Reset to default values for adding
       category: "",
       p1name: "",
       p1price: 0,
@@ -1322,7 +1310,11 @@ export default function MenuManagementPage() {
         throw new Error(response.data.message || "Failed to delete menu.");
       }
     } catch (error: any) {
-      toast.error(error.response?.data?.message || error.message || "Failed to delete menu.");
+      toast.error(
+        error.response?.data?.message ||
+          error.message ||
+          "Failed to delete menu."
+      );
       console.error("Error deleting menu:", error);
     } finally {
       setMenuToDeleteId(null);
@@ -1339,16 +1331,28 @@ export default function MenuManagementPage() {
         : await axios.post(url, data);
 
       if (response.data.success) {
-        toast.success(`Menu ${editingMenu ? "updated" : "added"} successfully!`);
+        toast.success(
+          `Menu ${editingMenu ? "updated" : "added"} successfully!`
+        );
         setIsMenuFormDialogOpen(false); // Close on success
         menuForm.reset(); // Reset form
         fetchMenus(); // Refresh the list
       } else {
-        throw new Error(response.data.message || `Failed to ${editingMenu ? "update" : "add"} menu.`);
+        throw new Error(
+          response.data.message ||
+            `Failed to ${editingMenu ? "update" : "add"} menu.`
+        );
       }
     } catch (error: any) {
-      console.error("Menu form submission error:", error.response?.data || error.message);
-      toast.error(error.response?.data?.message || error.message || `Failed to ${editingMenu ? "update" : "add"} menu.`);
+      console.error(
+        "Menu form submission error:",
+        error.response?.data || error.message
+      );
+      toast.error(
+        error.response?.data?.message ||
+          error.message ||
+          `Failed to ${editingMenu ? "update" : "add"} menu.`
+      );
     }
   };
 
@@ -1375,11 +1379,18 @@ export default function MenuManagementPage() {
 
       <section className="mb-12 bg-card-background/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-[#efa765]">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="yeseva-one text-[rgb(239,167,101)] text-3xl font-bold">Menu Categories</h2>
-
-          <Dialog open={isMenuFormDialogOpen} onOpenChange={setIsMenuFormDialogOpen}>
+          <h2 className="yeseva-one text-[rgb(239,167,101)] text-3xl font-bold">
+            Menu Categories
+          </h2>
+          <Dialog
+            open={isMenuFormDialogOpen}
+            onOpenChange={setIsMenuFormDialogOpen}
+          >
             <DialogTrigger asChild>
-              <Button onClick={handleAddNewMenuClick} className="bg-[#efa765] text-[#141f2d] hover:bg-opacity-90">
+              <Button
+                onClick={handleAddNewMenuClick}
+                className="bg-[#efa765] text-[#141f2d] hover:bg-opacity-90"
+              >
                 <PlusCircle className="mr-2 h-5 w-5" /> Add New Menu
               </Button>
             </DialogTrigger>
@@ -1390,15 +1401,22 @@ export default function MenuManagementPage() {
             >
               <DialogHeader className="flex-shrink-0">
                 <DialogTitle className="yeseva-one text-[rgb(239,167,101)]">
-                  {editingMenu ? `Edit Menu: ${editingMenu.category}` : "Add New Menu Category"}
+                  {editingMenu
+                    ? `Edit Menu: ${editingMenu.category}`
+                    : "Add New Menu Category"}
                 </DialogTitle>
                 <DialogDescription className="text-gray-400">
-                  {editingMenu ? "Make changes to this menu category and its products." : "Add a new menu category with its four main products."}
+                  {editingMenu
+                    ? "Make changes to this menu category and its products."
+                    : "Add a new menu category with its four main products."}
                 </DialogDescription>
               </DialogHeader>
 
               <Form {...menuForm}>
-                <form onSubmit={menuForm.handleSubmit(onMenuFormSubmit)} className="flex flex-col flex-grow">
+                <form
+                  onSubmit={menuForm.handleSubmit(onMenuFormSubmit)}
+                  className="flex flex-col flex-grow"
+                >
                   <div className="flex-grow overflow-y-auto pr-4 -mr-4 scrollbar-hide py-4 space-y-6">
                     {/* Category and Image */}
                     <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
@@ -1407,9 +1425,15 @@ export default function MenuManagementPage() {
                         name="category"
                         render={({ field }) => (
                           <FormItem className="flex-1">
-                            <FormLabel className="text-[#efa765]">Category Name</FormLabel>
+                            <FormLabel className="text-[#efa765]">
+                              Category Name
+                            </FormLabel>
                             <FormControl>
-                              <Input placeholder="Burgers" {...field} className="bg-gray-700 text-white border-gray-600" />
+                              <Input
+                                placeholder="Burgers"
+                                {...field}
+                                className="bg-gray-700 text-white border-gray-600"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -1420,7 +1444,9 @@ export default function MenuManagementPage() {
                         name="imageSrc"
                         render={({ field }) => (
                           <FormItem className="flex-1">
-                            <FormLabel className="text-[#efa765]">Category Image</FormLabel>
+                            <FormLabel className="text-[#efa765]">
+                              Category Image
+                            </FormLabel>
                             <FormControl>
                               <FileUpload
                                 onChange={field.onChange}
@@ -1437,16 +1463,24 @@ export default function MenuManagementPage() {
                     </div>
 
                     {/* Product 1 */}
-                    <h3 className="text-[#efa765] text-xl font-bold mt-6 mb-2">Product 1 Details</h3>
+                    <h3 className="text-[#efa765] text-xl font-bold mt-6 mb-2">
+                      Product 1 Details
+                    </h3>
                     <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
                       <FormField
                         control={menuForm.control}
                         name="p1name"
                         render={({ field }) => (
                           <FormItem className="flex-1">
-                            <FormLabel className="text-[#efa765]">Name</FormLabel>
+                            <FormLabel className="text-[#efa765]">
+                              Name
+                            </FormLabel>
                             <FormControl>
-                              <Input placeholder="Classic Burger" {...field} className="bg-gray-700 text-white border-gray-600" />
+                              <Input
+                                placeholder="Classic Burger"
+                                {...field}
+                                className="bg-gray-700 text-white border-gray-600"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -1457,13 +1491,21 @@ export default function MenuManagementPage() {
                         name="p1price"
                         render={({ field }) => (
                           <FormItem className="flex-1">
-                            <FormLabel className="text-[#efa765]">Price (PKR)</FormLabel>
+                            <FormLabel className="text-[#efa765]">
+                              Price (PKR)
+                            </FormLabel>
                             <FormControl>
                               <Input
                                 type="number"
                                 placeholder="750.00"
                                 {...field}
-                                onChange={(e) => field.onChange(e.target.value === "" ? 0 : parseFloat(e.target.value))}
+                                onChange={(e) =>
+                                  field.onChange(
+                                    e.target.value === ""
+                                      ? 0
+                                      : parseFloat(e.target.value)
+                                  )
+                                }
                                 className="bg-gray-700 text-white border-gray-600"
                               />
                             </FormControl>
@@ -1474,16 +1516,24 @@ export default function MenuManagementPage() {
                     </div>
 
                     {/* Product 2 */}
-                    <h3 className="text-[#efa765] text-xl font-bold mt-6 mb-2">Product 2 Details</h3>
+                    <h3 className="text-[#efa765] text-xl font-bold mt-6 mb-2">
+                      Product 2 Details
+                    </h3>
                     <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
                       <FormField
                         control={menuForm.control}
                         name="p2name"
                         render={({ field }) => (
                           <FormItem className="flex-1">
-                            <FormLabel className="text-[#efa765]">Name</FormLabel>
+                            <FormLabel className="text-[#efa765]">
+                              Name
+                            </FormLabel>
                             <FormControl>
-                              <Input placeholder="Zinger Burger" {...field} className="bg-gray-700 text-white border-gray-600" />
+                              <Input
+                                placeholder="Zinger Burger"
+                                {...field}
+                                className="bg-gray-700 text-white border-gray-600"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -1494,13 +1544,21 @@ export default function MenuManagementPage() {
                         name="p2price"
                         render={({ field }) => (
                           <FormItem className="flex-1">
-                            <FormLabel className="text-[#efa765]">Price (PKR)</FormLabel>
+                            <FormLabel className="text-[#efa765]">
+                              Price (PKR)
+                            </FormLabel>
                             <FormControl>
                               <Input
                                 type="number"
                                 placeholder="600.00"
                                 {...field}
-                                onChange={(e) => field.onChange(e.target.value === "" ? 0 : parseFloat(e.target.value))}
+                                onChange={(e) =>
+                                  field.onChange(
+                                    e.target.value === ""
+                                      ? 0
+                                      : parseFloat(e.target.value)
+                                  )
+                                }
                                 className="bg-gray-700 text-white border-gray-600"
                               />
                             </FormControl>
@@ -1511,16 +1569,24 @@ export default function MenuManagementPage() {
                     </div>
 
                     {/* Product 3 */}
-                    <h3 className="text-[#efa765] text-xl font-bold mt-6 mb-2">Product 3 Details</h3>
+                    <h3 className="text-[#efa765] text-xl font-bold mt-6 mb-2">
+                      Product 3 Details
+                    </h3>
                     <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
                       <FormField
                         control={menuForm.control}
                         name="p3name"
                         render={({ field }) => (
                           <FormItem className="flex-1">
-                            <FormLabel className="text-[#efa765]">Name</FormLabel>
+                            <FormLabel className="text-[#efa765]">
+                              Name
+                            </FormLabel>
                             <FormControl>
-                              <Input placeholder="Veggie Burger" {...field} className="bg-gray-700 text-white border-gray-600" />
+                              <Input
+                                placeholder="Veggie Burger"
+                                {...field}
+                                className="bg-gray-700 text-white border-gray-600"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -1531,13 +1597,21 @@ export default function MenuManagementPage() {
                         name="p3price"
                         render={({ field }) => (
                           <FormItem className="flex-1">
-                            <FormLabel className="text-[#efa765]">Price (PKR)</FormLabel>
+                            <FormLabel className="text-[#efa765]">
+                              Price (PKR)
+                            </FormLabel>
                             <FormControl>
                               <Input
                                 type="number"
                                 placeholder="550.00"
                                 {...field}
-                                onChange={(e) => field.onChange(e.target.value === "" ? 0 : parseFloat(e.target.value))}
+                                onChange={(e) =>
+                                  field.onChange(
+                                    e.target.value === ""
+                                      ? 0
+                                      : parseFloat(e.target.value)
+                                  )
+                                }
                                 className="bg-gray-700 text-white border-gray-600"
                               />
                             </FormControl>
@@ -1548,16 +1622,24 @@ export default function MenuManagementPage() {
                     </div>
 
                     {/* Product 4 */}
-                    <h3 className="text-[#efa765] text-xl font-bold mt-6 mb-2">Product 4 Details</h3>
+                    <h3 className="text-[#efa765] text-xl font-bold mt-6 mb-2">
+                      Product 4 Details
+                    </h3>
                     <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
                       <FormField
                         control={menuForm.control}
                         name="p4name"
                         render={({ field }) => (
                           <FormItem className="flex-1">
-                            <FormLabel className="text-[#efa765]">Name</FormLabel>
+                            <FormLabel className="text-[#efa765]">
+                              Name
+                            </FormLabel>
                             <FormControl>
-                              <Input placeholder="Swiss Burger" {...field} className="bg-gray-700 text-white border-gray-600" />
+                              <Input
+                                placeholder="Swiss Burger"
+                                {...field}
+                                className="bg-gray-700 text-white border-gray-600"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -1568,13 +1650,21 @@ export default function MenuManagementPage() {
                         name="p4price"
                         render={({ field }) => (
                           <FormItem className="flex-1">
-                            <FormLabel className="text-[#efa765]">Price (PKR)</FormLabel>
+                            <FormLabel className="text-[#efa765]">
+                              Price (PKR)
+                            </FormLabel>
                             <FormControl>
                               <Input
                                 type="number"
                                 placeholder="800.00"
                                 {...field}
-                                onChange={(e) => field.onChange(e.target.value === "" ? 0 : parseFloat(e.target.value))}
+                                onChange={(e) =>
+                                  field.onChange(
+                                    e.target.value === ""
+                                      ? 0
+                                      : parseFloat(e.target.value)
+                                  )
+                                }
                                 className="bg-gray-700 text-white border-gray-600"
                               />
                             </FormControl>
@@ -1583,26 +1673,33 @@ export default function MenuManagementPage() {
                         )}
                       />
                     </div>
-                  </div> {/* End of overflow-y-auto div */}
-
+                  </div>{" "}
+                  {/* End of overflow-y-auto div */}
                   <DialogFooter className="flex-shrink-0 pt-4">
-                    <Button type="submit" disabled={menuForm.formState.isSubmitting} className="bg-[#efa765] text-[#141f2d] hover:bg-opacity-90">
+                    <Button
+                      type="submit"
+                      disabled={menuForm.formState.isSubmitting}
+                      className="bg-[#efa765] text-[#141f2d] hover:bg-opacity-90"
+                    >
                       {menuForm.formState.isSubmitting ? (
                         <>
-                          <Loader2 className="animate-spin h-4 w-4 mr-2" /> Saving...
+                          <Loader2 className="animate-spin h-4 w-4 mr-2" />{" "}
+                          Saving...
                         </>
+                      ) : editingMenu ? (
+                        "Save Changes"
                       ) : (
-                        editingMenu ? "Save Changes" : "Add Menu"
+                        "Add Menu"
                       )}
                     </Button>
                   </DialogFooter>
                 </form>
               </Form>
             </DialogContent>
-          </Dialog> {/* End of the Dialog for Add/Edit */}
-
-        </div> {/* End of flex justify-between items-center mb-6 div */}
-
+          </Dialog>{" "}
+          {/* End of the Dialog for Add/Edit */}
+        </div>{" "}
+        {/* End of flex justify-between items-center mb-6 div */}
         {/* Display existing menus as cards */}
         {loadingMenus ? (
           <div className="flex items-center justify-center py-8">
@@ -1610,15 +1707,20 @@ export default function MenuManagementPage() {
             <p className="ml-3 text-lg">Loading menus...</p>
           </div>
         ) : menus.length === 0 ? (
-          <p className="text-center text-gray-400 py-8">No menus found. Add one to get started!</p>
+          <p className="text-center text-gray-400 py-8">
+            No menus found. Add one to get started!
+          </p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {menus.map((menu) => (
-              <div key={menu._id} className="relative bg-gray-700 rounded-lg shadow-lg overflow-hidden border border-gray-600">
+              <div
+                key={menu._id}
+                className="relative bg-gray-700 rounded-lg shadow-lg overflow-hidden border border-gray-600"
+              >
                 {/* Image Section */}
                 <div className="relative w-full h-48">
                   <Image
-                    src={menu.imageSrc || '/placeholder-image.jpg'} // Fallback placeholder
+                    src={menu.imageSrc || "/placeholder-image.jpg"} // Fallback placeholder
                     alt={menu.category}
                     layout="fill"
                     objectFit="cover"
@@ -1628,12 +1730,26 @@ export default function MenuManagementPage() {
 
                 {/* Content Section */}
                 <div className="p-4">
-                  <h3 className="text-2xl font-bold mb-2 text-[#efa765] truncate">{menu.category}</h3>
+                  <h3 className="text-2xl font-bold mb-2 text-[#efa765] truncate">
+                    {menu.category}
+                  </h3>
                   <div className="space-y-1 text-gray-200 text-sm">
-                    <p><span className="font-semibold">{menu.p1name}</span>: PKR {menu.p1price.toLocaleString()}</p>
-                    <p><span className="font-semibold">{menu.p2name}</span>: PKR {menu.p2price.toLocaleString()}</p>
-                    <p><span className="font-semibold">{menu.p3name}</span>: PKR {menu.p3price.toLocaleString()}</p>
-                    <p><span className="font-semibold">{menu.p4name}</span>: PKR {menu.p4price.toLocaleString()}</p>
+                    <p>
+                      <span className="font-semibold">{menu.p1name}</span>: PKR{" "}
+                      {menu.p1price.toLocaleString()}
+                    </p>
+                    <p>
+                      <span className="font-semibold">{menu.p2name}</span>: PKR{" "}
+                      {menu.p2price.toLocaleString()}
+                    </p>
+                    <p>
+                      <span className="font-semibold">{menu.p3name}</span>: PKR{" "}
+                      {menu.p3price.toLocaleString()}
+                    </p>
+                    <p>
+                      <span className="font-semibold">{menu.p4name}</span>: PKR{" "}
+                      {menu.p4price.toLocaleString()}
+                    </p>
                   </div>
                 </div>
 
@@ -1641,12 +1757,18 @@ export default function MenuManagementPage() {
                 <div className="absolute top-2 right-2">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="h-8 w-8 p-0 text-white hover:bg-gray-600">
+                      <Button
+                        variant="ghost"
+                        className="h-8 w-8 p-0 text-bold text-gray-700 bg-[#efa765] hover:cursor-pointer hover:bg-[#efa765]"
+                      >
                         <span className="sr-only">Open menu actions</span>
                         <MoreHorizontal className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="bg-gray-800 border-gray-700 text-white">
+                    <DropdownMenuContent
+                      align="end"
+                      className="bg-gray-800 border-gray-700 text-white"
+                    >
                       <DropdownMenuLabel>Actions</DropdownMenuLabel>
                       <DropdownMenuItem
                         onClick={() => handleEditMenuClick(menu)}
@@ -1674,15 +1796,27 @@ export default function MenuManagementPage() {
       <AlertDialog open={showDeleteConfirm} onOpenChange={setShowDeleteConfirm}>
         <AlertDialogContent className="bg-card-background/90 backdrop-blur-sm border-[#efa765] text-white">
           <AlertDialogHeader>
-            <AlertDialogTitle className="yeseva-one text-red-500">Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle className="yeseva-one text-red-500">
+              Are you absolutely sure?
+            </AlertDialogTitle>
             <AlertDialogDescription className="text-gray-400">
-              This action cannot be undone. This will permanently delete the menu category:
-              <br /><span className="font-bold text-white text-lg">{menuToDeleteCategory}</span>.
+              This action cannot be undone. This will permanently delete the
+              menu category:
+              <br />
+              <span className="font-bold text-white text-lg">
+                {menuToDeleteCategory}
+              </span>
+              .
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="bg-gray-700 text-white hover:bg-gray-600 hover:text-white border-gray-600">Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={executeDeleteMenu} className="bg-red-600 text-white hover:bg-red-700">
+            <AlertDialogCancel className="bg-gray-700 text-white hover:bg-gray-600 hover:text-white border-gray-600">
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onClick={executeDeleteMenu}
+              className="bg-red-600 text-white hover:bg-red-700"
+            >
               Delete
             </AlertDialogAction>
           </AlertDialogFooter>

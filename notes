@@ -1,10 +1,28 @@
 
 
-user dashboard,
-manager dashboard,
-admin page analytics
+user dashboard, analytics,
+staff dashboard, anylytics(optional)
+manager dashboard, analytics,
+admin page analytics(category, product, total customer, bookings, orders, reviews, contact msg, ), add copon code
 fetch dynamic Reviews responsiveness
 @REM set home and about page  backgourond-image url("url")
 
 
-https://www.youtube.com/watch?v=Q2MQQKYzmMU
+product page(progress baar filter)
+when click on product than product page should be open 
+if product already added than button text should be "go to cart page" not "Add to Cart" 
+
+
+"proceed to checkout" => address details page with copon code, place order button to call stripe api to fill cart details
+after successfull payment redirect to "order details page"
+
+
+
+pages: 
+    1) order details,
+    2) checkout page,
+
+
+utilities for: ApiResponse and ApiError
+admin sidebaar scrollbar
+signup page (password strength progress bar, view password eye icon)

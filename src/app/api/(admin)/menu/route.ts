@@ -11,10 +11,7 @@ dbConnect();
  
 // GET all menus
 export async function GET() {
-  const session = await getServerSession(authOptions);
-  if (!session || session.user?.role !== 'admin') {
-    return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
-  }
+ 
   try {
     const menus = await Menu.find({}).sort({ category: 1 }); // Sort by category name
     return NextResponse.json({ success: true, data: menus }, { status: 200 });
@@ -26,6 +23,10 @@ export async function GET() {
 
 // POST a new menu
 export async function POST(request: NextRequest) {
+   const session = await getServerSession(authOptions);
+  if (!session || session.user?.role !== 'admin') {
+    return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
+  }
   try {
     const body = await request.json();
 

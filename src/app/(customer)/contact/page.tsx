@@ -26,10 +26,9 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { IReview } from "@/models/Review.model";
 
 type ContactFormInputs = z.infer<typeof contactSchema>;
 
@@ -37,7 +36,7 @@ export default function ContactPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { data: session } = useSession();
-  const [reviews, setReviews] = useState<Review[]>([]);
+  const [reviews, setReviews] = useState<IReview[]>([]);
   const [isLoadingReviews, setIsLoadingReviews] = useState(true);
   const [errorReviews, setErrorReviews] = useState<string | null>(null);
 
@@ -117,10 +116,10 @@ export default function ContactPage() {
 
   return (
     <>
-      <div className="relative flex flex-col items-center justify-center min-h-screen p-4 bg-dark-background font-sans overflow-hidden">
+      <div className="relative flex flex-col items-center justify-center min-h-screen bg-dark-background font-sans overflow-hidden">
         <div className="absolute inset-0 bg-dark-background/80 z-10"></div>
 
-        <div className="relative z-20 max-w-5xl w-full bg-card-background/90 backdrop-blur-sm p-8 md:p-12  overflow-hidden transform transition-all duration-300">
+        <div className="relative my-10 z-20 max-w-5xl w-full bg-card-background/90 backdrop-blur-sm overflow-hidden transform transition-all duration-300">
           <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-transparent via-accent-red to-transparent"></div>
           <div className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-transparent via-accent-red to-transparent"></div>
 
@@ -128,7 +127,7 @@ export default function ContactPage() {
             Contact Us
           </h1>
           <div className="text-center mb-12 space-y-4">
-            <p className="third-heading font-yeseva-one text-fast-food-orange text-3xl-plus leading-tight drop-shadow-sm">
+            <p className="third-heading font-yeseva-one text-3xl-plus leading-tight drop-shadow-sm">
               Every message is a valued connection.
             </p>
             <p className="text-[#efa765] text-text-light text-lg italic font-sans opacity-90">
@@ -334,7 +333,7 @@ export default function ContactPage() {
       <div className="mt-8 md:mt-10 flex flex-col lg:flex-row justify-evenly items-stretch gap-10 lg:gap-16 rounded-3xl p-4">
         {/* Left Column: Google Map Section */}
 
-        <div className="flex-1 p-8 rounded-2xl bg-card-background/90 backdrop-blur-sm shadow-2xl border border-[#efa765]">
+        <div className="flex-1 px-8 py-6 rounded-2xl bg-card-background/90 backdrop-blur-sm shadow-2xl border border-[#efa765]">
           {" "}
           <h2 className="third-heading text-center mb-8">Find Us on the Map</h2>
           <div
@@ -357,7 +356,7 @@ export default function ContactPage() {
             Pakistan. 
           </p>
         </div>
-        <div className="flex-1 p-8 rounded-2xl bg-card-background/90 backdrop-blur-sm shadow-2xl border border-[#efa765] flex flex-col justify-between w-1/2">
+        <div className="flex-1 p-8 rounded-2xl bg-card-background/90 backdrop-blur-sm shadow-2xl border border-[#efa765] flex flex-col justify-between lg:w-1/2 md:w-full">
           <div>
                      
             <h2 className="third-heading text-center mb-6">

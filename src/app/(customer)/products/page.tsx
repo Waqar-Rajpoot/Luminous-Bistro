@@ -359,6 +359,7 @@ const App = () => {
       return;
     }
     dispatch({ type: 'ADD_ITEM', payload: product });
+    toast.success(`${product.name} added to your cart.`);
   };
 
   const handleUpdateQuantity = (product, quantity) => {

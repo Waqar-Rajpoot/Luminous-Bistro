@@ -14,17 +14,17 @@ export const metadata: Metadata = {
 
 // Configure the Yeseva One font
 const yesevaOne = Yeseva_One({
-  weight: ["400"], 
-  subsets: ["latin"], 
+  weight: ["400"],
+  subsets: ["latin"],
   variable: "--font-yeseva-one",
-  display: "swap", 
+  display: "swap",
 });
 
 // Configure the Varela Round font
 const varelaRound = Varela_Round({
   weight: ["400"],
   subsets: ["latin"],
-  variable: "--font-varela-round", 
+  variable: "--font-varela-round",
   display: "swap",
 });
 
@@ -47,6 +47,11 @@ export default function RootLayout({
             {children}
             <Footer />
             <Toaster />
+            <script
+              id="omnidimension-web-widget"
+              async
+              src="https://backend.omnidim.io/web_widget.js?secret_key=08bd9baffef2509d3c0c2a1db12f57aa"
+            ></script>
           </body>
         </ImageKitProvider>
       </AuthProvider>

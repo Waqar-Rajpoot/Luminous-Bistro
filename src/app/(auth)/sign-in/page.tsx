@@ -48,7 +48,7 @@ const Signin = () => {
     }
 
     if (result?.url) {
-      router.replace("/dashboard");
+      router.replace("/");
     }
 
     setIsSubmitting(false);

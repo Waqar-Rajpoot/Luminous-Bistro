@@ -3,7 +3,7 @@ import React, { Suspense } from 'react';
 import { Loader2 } from 'lucide-react';
 import { getServerSession } from 'next-auth'; // For server-side auth check
 import { redirect } from 'next/navigation';
-import { authOptions } from '../api/auth/[...nextauth]/options';
+import { authOptions } from '../../api/auth/[...nextauth]/options';
 import AdminSheetNav from '@/components/AdminSidebar';
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   // Server-side check for authentication and authorization

@@ -16,13 +16,17 @@ export async function middleware(request: NextRequest) {
       url.pathname.startsWith("/verify") ||
       url.pathname.startsWith("/verify/:path*"))
   ) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   if (
     !token &&
-    (url.pathname.startsWith("/dashboard") ||
-      url.pathname.startsWith("/dashboard/:path*") ||
+    (url.pathname.startsWith("/user-dashboard") ||
+      url.pathname.startsWith("/manager-dashboard") ||
+      url.pathname.startsWith("/staff-dashboard") ||
+      url.pathname.startsWith("/user-dashboard/:path*") ||
+      url.pathname.startsWith("/manager-dashboard/:path*") ||
+      url.pathname.startsWith("/staff-dashboard/:path*") ||
       url.pathname.startsWith("/admin") ||
       url.pathname.startsWith("/admin/:path*"))
   ) {
@@ -31,7 +35,7 @@ export async function middleware(request: NextRequest) {
 
   if (token && url.pathname.startsWith("/admin")) {
     if (token.role !== "admin") {
-      return NextResponse.redirect(new URL("/dashboard", request.url));
+      return NextResponse.redirect(new URL("/", request.url));
     }
   }
 

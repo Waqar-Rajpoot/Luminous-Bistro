@@ -1,6 +1,4 @@
 import dbConnect from "@/lib/dbConnect";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/options";
 import { NextResponse } from "next/server";
 import ReviewModel, { IReview } from "@/models/Review.model";
 import { ErrorResponse } from "@/utils/ErrorResponse";
@@ -15,11 +13,6 @@ interface SuccessResponse {
 
 export async function GET() {
   await dbConnect();
-
-  const session = await getServerSession(authOptions);
-  if (!session || session.user?.role !== 'admin') {
-    return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
-  }
 
   try {
     const reviews = await ReviewModel.find({isApproved:true}).sort({ createdAt: -1 }); 
