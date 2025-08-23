@@ -35,7 +35,7 @@ const VerifyAccount = () => {
   const params = useParams<{ username: string }>();
 
   // State for resend code loading
-  const [isResendingCode, setIsResendingCode] = useState(false);
+  // const [isResendingCode, setIsResendingCode] = useState(false);
 
   const form = useForm<z.infer<typeof verifySchema>>({
     resolver: zodResolver(verifySchema),
@@ -63,23 +63,23 @@ const VerifyAccount = () => {
     }
   };
 
-  const handleResendCode = async () => {
-    setIsResendingCode(true);
-    try {
-      const response = await axios.post(`/api/resend-code`, {
-        username: params.username,
-      });
-      toast.success(response.data.message || "Verification code sent again!");
-    } catch (error) {
-      console.error("Error resending code:", error);
-      const axiosError = error as AxiosError;
-      toast.error(
-        axiosError.response?.data?.message ?? "Failed to resend code."
-      );
-    } finally {
-      setIsResendingCode(false);
-    }
-  };
+  // const handleResendCode = async () => {
+  //   setIsResendingCode(true);
+  //   try {
+  //     const response = await axios.post(`/api/resend-code`, {
+  //       username: params.username,
+  //     });
+  //     toast.success(response.data.message || "Verification code sent again!");
+  //   } catch (error) {
+  //     console.error("Error resending code:", error);
+  //     const axiosError = error as AxiosError;
+  //     toast.error(
+  //       axiosError.response?.data?.message ?? "Failed to resend code."
+  //     );
+  //   } finally {
+  //     setIsResendingCode(false);
+  //   }
+  // };
 
   return (
     // Outer container matching the signup page's min-h, flex, and padding
