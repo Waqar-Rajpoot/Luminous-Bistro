@@ -330,7 +330,7 @@ const App = () => {
 
   // Filter and sort products
   const getFilteredAndSortedProducts = () => {
-    let filtered = products.filter(product => {
+      const filtered = products.filter(product => {
       const nameMatch = product.name.toLowerCase().includes(filterName.toLowerCase());
       return nameMatch;
     });
