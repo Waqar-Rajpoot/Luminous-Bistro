@@ -3,8 +3,13 @@ import { CalendarDays, DollarSign, ShoppingCart, Star } from "lucide-react";
 import React from "react";
 
 const OverviewCards = ({data}) => {
-  console.log('card file')
-  console.log("data from cards",data)
+  if (!data) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-10">
+        <p>Loading overview cards...</p>
+      </div>
+    );
+  }
   return (
     <>
       {/* Analytics Cards Grid */}
@@ -20,8 +25,7 @@ const OverviewCards = ({data}) => {
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-[#efa765]">
-              {/* {dashboardData.totalReviews.toLocaleString()} */}
-              100
+              {data.reviews.toLocaleString()}
             </div>
           </CardContent>
         </Card>
@@ -36,7 +40,6 @@ const OverviewCards = ({data}) => {
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-[#efa765]">
-              {/* {dashboardData.averageRating.toFixed(1)} / 5 */}
               4.5
             </div>
           </CardContent>
@@ -52,8 +55,7 @@ const OverviewCards = ({data}) => {
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-[#efa765]">
-              {/* {dashboardData.totalOrders.toLocaleString()} */}
-              50
+              {data.orders.toLocaleString()}
             </div>
           </CardContent>
         </Card>
@@ -73,7 +75,7 @@ const OverviewCards = ({data}) => {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2,
                   })} */}
-              2000
+              {data.reviews.toLocaleString()}
             </div>
           </CardContent>
         </Card>
@@ -88,8 +90,7 @@ const OverviewCards = ({data}) => {
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-[#efa765]">
-              {/* {dashboardData.totalTableBookings} */}
-              10
+              {data.bookings.toLocaleString()}
             </div>
           </CardContent>
         </Card>

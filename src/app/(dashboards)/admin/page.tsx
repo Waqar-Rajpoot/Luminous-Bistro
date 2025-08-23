@@ -5,7 +5,7 @@ import { Star } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Loader2 } from "lucide-react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 import Link from "next/link";
 // import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"; // Assuming you have Shadcn Card components
@@ -17,131 +17,61 @@ import {
   ListOrdered, // For Order Management
 } from "lucide-react"; // Import new icons
 import OverviewCards from "./components/OverviewCards";
-import ReviewsChart from "./components/ReviewsChart";
+import ReviewsChart from "./components/Charts";
 
-// Data types for the dashboard summary
-interface DashboardData {
-  totalReviews: number;
-  averageRating: number;
-  ratingBreakdown: {
-    "5": number;
-    "4": number;
-    "3": number;
-    "2": number;
-    "1": number;
-  };
-  totalContactMessages: number;
-  totalVisitors: number;
-  totalOrders: number;
-  totalRevenue: number;
-  totalTableBookings: number;
+interface DashboardStatsData {
+  reviews: number;
+  products: number;
+  bookings: number;
+  orders: number;
 }
 
-// Data types for the monthly charts
-interface MonthlyData {
-  name: string; // E.g., "Jan", "Feb"
-  reviews: number;
-  orders: number;
-  bookings: number;
+// Define the shape of the full API response
+interface ApiResponse<T> {
+  success: boolean;
+  message?: string;
+  data?: T;
 }
 
 export default function AdminDashboard() {
-  const [dashboardData, setDashboardData] = useState<DashboardData | null>(
-    null
-  );
-  const [monthlyData, setMonthlyData] = useState<MonthlyData[] | null>(null);
+  const [stats, setStats] = useState<DashboardStatsData | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const fetchSummaryData = () => {
-    return new Promise<DashboardData>((resolve) => {
-      setTimeout(() => {
-        // Mock data based on your website's potential data.
-        const mockData: DashboardData = {
-          totalReviews: 250,
-          averageRating: 4.6,
-          ratingBreakdown: {
-            "5": 180, // 72%
-            "4": 50, // 20%
-            "3": 10, // 4%
-            "2": 5, // 2%
-            "1": 5, // 2%
-          },
-          totalContactMessages: 15,
-          totalVisitors: 15430,
-          totalOrders: 540,
-          totalRevenue: 28500.5,
-          totalTableBookings: 85,
-        };
-        resolve(mockData);
-      }, 1500);
-    });
-  };
-
-  const fetchMonthlyData = () => {
-    return new Promise<MonthlyData[]>((resolve) => {
-      setTimeout(() => {
-        // Mock monthly data for reviews, orders, and bookings.
-        const mockMonthlyData: MonthlyData[] = [
-          { name: "Jan", reviews: 20, orders: 45, bookings: 10 },
-          { name: "Feb", reviews: 35, orders: 70, bookings: 15 },
-          { name: "Mar", reviews: 40, orders: 85, bookings: 20 },
-          { name: "Apr", reviews: 28, orders: 60, bookings: 12 },
-          { name: "May", reviews: 45, orders: 105, bookings: 18 },
-          { name: "Jun", reviews: 30, orders: 90, bookings: 15 },
-          { name: "Jul", reviews: 52, orders: 85, bookings: 25 },
-        ];
-        resolve(mockMonthlyData);
-      }, 1500);
-    });
-  };
-  // --- End of Mock API Calls ---
-  let data;
-
-  const handleCount = async () => {
-    const response = await axios.get("/api/count")
-    data = response.data;
-    console.log(response.data)
-  };
 
   useEffect(() => {
-    // Fetch both sets of data concurrently when the component mounts.
-    // backendData();
-    const getDashboardData = async () => {
+    const fetchStats = async () => {
       try {
-        const [summary, monthly] = await Promise.all([
-          fetchSummaryData(),
-          fetchMonthlyData(),
-        ]);
-        setDashboardData(summary);
-        setMonthlyData(monthly);
-      } catch (error) {
-        console.error("Failed to fetch dashboard data:", error);
+        const response: AxiosResponse<ApiResponse<DashboardStatsData>> =
+          await axios.get("/api/count");
+
+        if (response.data.success && response.data.data) {
+          setStats(response.data.data);
+        } else {
+          setError(response.data.message || "Failed to fetch dashboard data.");
+        }
+      } catch (err) {
+        if (axios.isAxiosError(err)) {
+          if (err.response) {
+            setError(err.response.data.message || "Server error");
+          } else {
+            setError(err.message);
+          }
+        } else {
+          setError("An unexpected error occurred.");
+        }
       } finally {
         setIsLoading(false);
       }
     };
-    getDashboardData();
-  }, []);
 
-  // Helper function for the rating breakdown percentage
-  const getRatingPercentage = (ratingCount: number, total: number) => {
-    return total > 0 ? (ratingCount / total) * 100 : 0;
-  };
+    fetchStats();
+  }, []);
 
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen bg-gray-950 text-white">
         <Loader2 className="h-12 w-12 animate-spin text-[#efa765]" />
         <span className="ml-4 text-xl">Loading Dashboard...</span>
-      </div>
-    );
-  }
-
-  if (!dashboardData || !monthlyData) {
-    return (
-      <div className="flex justify-center items-center h-screen bg-gray-950 text-red-500">
-        <span className="text-xl">
-          Failed to load dashboard data. Please try again.
-        </span>
       </div>
     );
   }
@@ -159,10 +89,13 @@ export default function AdminDashboard() {
               Analytics & Key Metrics
             </p>
           </div>
-
-          <OverviewCards data={data} />
-    <button className="btn btn-primary" onClick={handleCount}>count data</button>
-
+          {error && (
+            <div className="text-center p-4 mb-4 text-red-500 bg-red-900 rounded-lg">
+              <p className="text-xl font-semibold">Error:</p>
+              <p>{error}</p>
+            </div>
+          )}
+          <OverviewCards data={stats} />
           <ReviewsChart />
         </div>
       </div>

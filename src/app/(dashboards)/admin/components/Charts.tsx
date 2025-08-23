@@ -106,7 +106,7 @@ const RATING_COLORS = ["#10B981", "#FACC15", "#FB923C", "#F87171", "#EF4444"];
 const ORDER_STATUS_COLORS = ["#38bdf8", "#FFBB28", "#FF8042"];
 const BOOKING_COLORS = ["#A855F7", "#6366F1", "#EC4899"];
 
-const ReviewsChart = () => {
+const Chart = () => {
   return (
     <>
       {/* Monthly Charts Section */}
@@ -599,4 +599,4 @@ const ReviewsChart = () => {
   );
 };
 
-export default ReviewsChart;
+export default Chart;
