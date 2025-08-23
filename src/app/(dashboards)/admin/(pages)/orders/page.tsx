@@ -311,9 +311,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Trash2, RefreshCcw } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-
-// Helper function to get status badge color
 const getStatusVariant = (status: string) => {
   switch (status) {
     case "paid":

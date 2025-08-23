@@ -63,7 +63,7 @@ export async function PUT(request: NextRequest, { params }: { params: { menuId: 
       );
     }
 
-    const { _id, ...updateData } = validationResult.data; // Exclude _id if present, as we use params.menuId
+    const { ...updateData } = validationResult.data; // Exclude _id if present, as we use params.menuId
 
     // Find and update the menu
     const updatedMenu = await Menu.findByIdAndUpdate(menuId, updateData, { new: true, runValidators: true });

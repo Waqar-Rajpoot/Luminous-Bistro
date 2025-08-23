@@ -5,7 +5,7 @@ import { authOptions } from "../../../auth/[...nextauth]/options"; // Adjust pat
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import BookingModel from "@/models/Booking.model"; // Assuming BookingModel for bookings
-import { getMonthName, getAllMonths } from "@/utils/monthNames";
+import { getAllMonths } from "@/utils/monthNames";
 
 export async function GET() {
   try {

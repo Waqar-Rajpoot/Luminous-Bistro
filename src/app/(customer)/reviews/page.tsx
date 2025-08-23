@@ -28,7 +28,7 @@ type ReviewFormInputs = z.infer<typeof reviewSchema>;
 
 export default function ReviewsPage() {
   const router = useRouter();
-  const { data: session, status } = useSession();
+  const { data: session} = useSession();
   
   const [isSubmitting, setIsSubmitting] = useState(false);
 

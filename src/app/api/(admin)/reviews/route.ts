@@ -59,7 +59,7 @@ export async function POST(request: Request) {
 }
 
 // --- GET (Fetch all reviews for admin panel) ---
-export async function GET(request: Request) {
+export async function GET() {
   await dbConnect();
 
   const session = await getServerSession(authOptions);

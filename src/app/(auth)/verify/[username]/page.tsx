@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react"; // Added useState for resend code loading
 import { verifySchema } from "@/schemas/verifySchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios, { AxiosError } from "axios";

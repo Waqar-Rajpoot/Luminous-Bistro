@@ -4,7 +4,7 @@ import dbConnect from "@/lib/dbConnect";
 import Product from "@/models/Product.model";
 
 // GET a single product by ID
-export async function GET(req, { params }) {
+export async function GET( { params }: { params: { id: string } }) {
   await dbConnect();
   const { id } = await params;
 
@@ -27,7 +27,7 @@ export async function GET(req, { params }) {
 }
 
 // UPDATE a product by ID
-export async function PUT(req: NextRequest, { params }: any) {
+export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
   await dbConnect();
   const { id } = await params;
 
@@ -62,7 +62,7 @@ export async function PUT(req: NextRequest, { params }: any) {
 }
 
 // DELETE a product by ID
-export async function DELETE(req, { params }) {
+export async function DELETE( { params }: { params: { id: string } }) {
   await dbConnect();
   const { id } = await params;
 

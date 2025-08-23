@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { _id, ...menuData } = validationResult.data; // Exclude _id if present for new creation
+    const {...menuData } = validationResult.data; // Exclude _id if present for new creation
 
     const newMenu = await Menu.create(menuData);
     return NextResponse.json({ success: true, data: newMenu }, { status: 201 });

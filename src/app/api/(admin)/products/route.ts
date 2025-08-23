@@ -1,5 +1,5 @@
 // app/api/products/route.js
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import Product from "@/models/Product.model";
 import { getServerSession } from "next-auth";
@@ -20,7 +20,7 @@ export async function GET() {
       { success: true, data: products },
       { status: 200 }
     );
-  } catch (error) {
+  } catch (error:any) {
     console.error("Error fetching products:", error);
     return NextResponse.json(
       { success: false, message: error.message || "Internal Server Error" },
@@ -30,7 +30,7 @@ export async function GET() {
 }
 
 // POST a new product
-export async function POST(req) {
+export async function POST(req: NextRequest) {
   await dbConnect();
    const session = await getServerSession(authOptions);
     if (!session || session.user?.role !== 'admin') {
