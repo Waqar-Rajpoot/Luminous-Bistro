@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod";
 
-// Shadcn UI Imports for Form and Button (already present)
 import {
   Form,
   FormControl,
@@ -20,7 +19,6 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 
-// Shadcn UI Imports for InputOTP
 import {
   InputOTP,
   InputOTPGroup,
@@ -61,24 +59,6 @@ const VerifyAccount = () => {
       );
     }
   };
-
-  // const handleResendCode = async () => {
-  //   setIsResendingCode(true);
-  //   try {
-  //     const response = await axios.post(`/api/resend-code`, {
-  //       username: params.username,
-  //     });
-  //     toast.success(response.data.message || "Verification code sent again!");
-  //   } catch (error) {
-  //     console.error("Error resending code:", error);
-  //     const axiosError = error as AxiosError;
-  //     toast.error(
-  //       axiosError.response?.data?.message ?? "Failed to resend code."
-  //     );
-  //   } finally {
-  //     setIsResendingCode(false);
-  //   }
-  // };
 
   return (
     // Outer container matching the signup page's min-h, flex, and padding

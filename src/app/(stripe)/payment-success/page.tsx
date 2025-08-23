@@ -168,7 +168,7 @@ async function PaymentDetailsFetcher({ sessionId }: { sessionId: string }) {
 export default async function PaymentSuccessPage({
   searchParams,
 }: {
-  searchParams: Record<string, string | string[] | undefined> | Promise<Record<string, string | string[] | undefined>>;
+  searchParams: Promise<{ session_id?: string }>;
 }) {
   const resolvedSearchParams = await searchParams;
   const sessionId = resolvedSearchParams.session_id;
