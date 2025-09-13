@@ -17,16 +17,17 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
+import { Loader2, Eye, EyeOff } from "lucide-react";
 import { signInSchema } from "@/schemas/signInSchema";
 import { signIn } from "next-auth/react";
 
 const Signin = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [showPassword, setShowPassword] = useState(false);
+
   const router = useRouter();
 
-  // zod implementation
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -98,18 +99,37 @@ const Signin = () => {
                     Password
                   </FormLabel>
                   <FormControl>
+                    <div className="relative">
                     <Input
                       placeholder="Enter your password"
                       {...field}
-                      type="password"
-                      className="text"
+                      type={showPassword ? "text" : "password"}
+                      className="text pr-10"
                       required
                     />
+                    <button
+                      className="text absolute right-2 top-0 h-full py-2 hover:cursor-pointer"
+                      type="button"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      aria-label={showPassword ? "Hide password" : "Show password"}
+                    >
+                      {showPassword ? (<EyeOff className="h-5 w-5" />) : (<Eye className="h-5 w-5" />)}
+                    </button>
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+            <div className="text-right">
+              <Link
+                href="/forgot-password"
+                className="text-sm hover:underline"
+                style={{ color: "rgb(239, 167, 101)" }}
+              >
+                Forgot Password?
+              </Link>
+            </div>
             <Button
               type="submit"
               disabled={isSubmitting}

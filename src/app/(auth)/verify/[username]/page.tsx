@@ -2,7 +2,7 @@
 import { verifySchema } from "@/schemas/verifySchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios, { AxiosError } from "axios";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -24,12 +24,17 @@ import {
   InputOTPGroup,
   InputOTPSlot,
   InputOTPSeparator,
-} from "@/components/ui/input-otp"; // Make sure this path is correct
+} from "@/components/ui/input-otp";
 import { Loader2 } from "lucide-react";
 
 const VerifyAccount = () => {
   const router = useRouter();
   const params = useParams<{ username: string }>();
+
+   const searchParams = useSearchParams();
+  const emailType = searchParams.get("emailType");
+
+
 
   // State for resend code loading
   // const [isResendingCode, setIsResendingCode] = useState(false);
@@ -37,19 +42,27 @@ const VerifyAccount = () => {
   const form = useForm<z.infer<typeof verifySchema>>({
     resolver: zodResolver(verifySchema),
     defaultValues: {
-      code: "", // Initialize code field
+      code: "",
     },
   });
 
   const onSubmit = async (data: z.infer<typeof verifySchema>) => {
+
+  console.log("emailType in verify page", emailType);
+
     try {
       const response = await axios.post(`/api/verify-code`, {
         username: params.username,
         code: data.code,
+        emailType,
       });
 
       toast.success(response.data.message);
-      router.replace("/sign-in");
+      if (emailType === 'RESET') {
+         router.replace(`/reset-password?username=${params.username}&code=${data.code}`);
+      } else {
+        router.replace("/sign-in");
+      }
     } catch (error) {
       console.error("Error in verifying account:", error); // Use console.error for errors
       const axiosError = error as AxiosError;
@@ -68,9 +81,9 @@ const VerifyAccount = () => {
         {/* Heading matching the signup page's h2 styling */}
         <h1 className="second-heading mb-6 text-center">Verify Your Account</h1>
         <p className="mb-6 text-center text">
-          {" "}
           {/* Adjusted text color for readability on light background */}A
-          6-digit verification code has been sent to your email address.
+          6-digit verification code has been sent to your email address.it will
+          expire in 5 minutes
         </p>
 
         <Form {...form}>

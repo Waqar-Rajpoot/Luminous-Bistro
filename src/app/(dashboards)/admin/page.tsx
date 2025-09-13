@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Star } from "lucide-react";
+import { Plus, Star, Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Loader2 } from "lucide-react";
@@ -180,6 +180,22 @@ export default function AdminDashboard() {
               <CardContent>
                 <p className="text-gray-300 text-lg">
                   View and manage customer feedback and ratings.
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+
+          {/* User Management Card */}
+          <Link href="/admin/users" className="block">
+            <Card className="bg-card-background/90 backdrop-blur-sm border-[#efa765] text-white hover:border-white transition-colors cursor-pointer min-h-[180px]">
+              <CardHeader>
+                <CardTitle className="flex items-center text-[#efa765]">
+                  <Users className="mr-3 h-7 w-7" /> User Management
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-300 text-lg">
+                  Manage user accounts, permissions, and roles.
                 </p>
               </CardContent>
             </Card>

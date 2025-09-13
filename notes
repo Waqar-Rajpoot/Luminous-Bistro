@@ -3,7 +3,7 @@
 user dashboard, analytics,
 staff dashboard, anylytics(optional)
 manager dashboard, analytics,
-admin page analytics(category, product, total customer, bookings, orders, reviews, contact msg, ), add copon code
+admin page analytics(category, product, total customer, bookings, orders, reviews, contact msg, )
 fetch dynamic Reviews responsiveness
 @REM set home and about page  backgourond-image url("url")
 
@@ -13,16 +13,15 @@ when click on product than product page should be open
 if product already added than button text should be "go to cart page" not "Add to Cart" 
 
 
-"proceed to checkout" => address details page with copon code, place order button to call stripe api to fill cart details
-after successfull payment redirect to "order details page"
-
-
-
 pages: 
     1) order details,
     2) checkout page,
 
+save discounted amount in database if coupon is applied instead of original price of products 
 
+add menu item form inputs depended on onclick
 utilities for: ApiResponse and ApiError
 admin sidebaar scrollbar
-signup page (password strength progress bar, view password eye icon)
+signup page (password strength progress bar)
+
+

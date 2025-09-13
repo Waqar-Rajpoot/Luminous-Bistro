@@ -12,7 +12,9 @@ import {
   Star, // For Reviews
   MessageSquare, // For Contact Messages
   CalendarCheck, // For Booked Tables
-  ListOrdered // Added for Order Management
+  ListOrdered, // Added for Order Management
+  Users,
+  Plus
 } from 'lucide-react';
 import {
   Sheet,
@@ -32,6 +34,7 @@ export default function AdminSheetNav() {
     { href: '/admin/product-management', label: 'Product Management', icon: Box },
     { href: '/admin/orders', label: 'Order Management', icon: ListOrdered }, // New: Order Management
     { href: '/admin/reviews', label: 'User Reviews', icon: Star }, // New: User Reviews
+    { href: '/admin/users', label: 'Users', icon: Users },
     { href: '/admin/messages', label: 'Contact Messages', icon: MessageSquare }, // New: Contact Messages
     { href: '/admin/bookings', label: 'Booked Tables', icon: CalendarCheck }, // New: Booked Tables
     { href: '/admin/settings', label: 'Settings', icon: Settings },

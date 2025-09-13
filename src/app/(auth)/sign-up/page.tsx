@@ -20,27 +20,42 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { signUpSchema } from "@/schemas/SignUpSchema";
-import { Loader2 } from "lucide-react";
+import { Loader2, Eye, EyeOff } from "lucide-react";
 import { ErrorResponse } from "@/utils/ErrorResponse";
+import { checkPasswordStrength } from "@/lib/passwordStrength";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [usernameMessage, setUsernameMessage] = useState("");
   const [isCheckingUsername, setIsCheckingUsername] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState({
+    score: 0,
+    status: "",
+    color: "#ddd",
+    feedback: [],
+  });
 
   const debounced = useDebounceCallback(setUsername, 500);
   const router = useRouter();
 
-  // zod implementation
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
+      name: "",
       username: "",
       email: "",
       password: "",
     },
   });
+
+  const passwordValue = form.watch("password");
+
+  useEffect(() => {
+    const strength: any = checkPasswordStrength(passwordValue);
+    setPasswordStrength(strength);
+  }, [passwordValue]);
 
   useEffect(() => {
     const checkUsername = async () => {
@@ -72,7 +87,10 @@ const Signup = () => {
     try {
       const response = await axios.post("/api/sign-up", data);
       toast.success(response.data.message);
-      router.replace(`/verify/${username}`);
+
+      const { emailType } = response.data;
+      console.log("emailType in sign up page", emailType);
+      router.replace(`/verify/${username}?emailType=${emailType}`);
     } catch (error) {
       const axiosError = error as AxiosError<ErrorResponse>;
       toast.error(
@@ -93,6 +111,29 @@ const Signup = () => {
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-6"
           >
+            <FormField
+              name="name"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel
+                    className="varela-round block text-sm font-medium"
+                    style={{ color: "rgb(239, 167, 101)" }}
+                  >
+                    Name
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your name"
+                      {...field}
+                      className="text"
+                      required
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               name="username"
               control={form.control}
@@ -120,7 +161,7 @@ const Signup = () => {
                   <p
                     className={`text-sm ${usernameMessage === "Username is available" ? "text-green-500" : "text-red-500"}`}
                   >
-                    {usernameMessage}
+                    { username ? usernameMessage : ""}
                   </p>
                   <FormMessage />
                 </FormItem>
@@ -161,14 +202,55 @@ const Signup = () => {
                     Password
                   </FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="Enter your password"
-                      {...field}
-                      type="password"
-                      className="text"
-                      required
-                    />
+                    <div className="relative">
+                      <Input
+                        placeholder="Enter your password"
+                        {...field}
+                        type={showPassword ? "text" : "password"}
+                        className="text pr-10"
+                        required
+                      />
+                      <button
+                        className="text absolute right-2 top-0 h-full py-2 hover:cursor-pointer"
+                        type="button"
+                        onClick={() => setShowPassword((prev) => !prev)}
+                        aria-label={
+                          showPassword ? "Hide password" : "Show password"
+                        }
+                      >
+                        {showPassword ? (
+                          <EyeOff className="h-5 w-5" />
+                        ) : (
+                          <Eye className="h-5 w-5" />
+                        )}
+                      </button>
+                    </div>
                   </FormControl>
+                  <div className="w-full bg-gray-200 rounded-full h-3 mt-2 overflow-hidden relative">
+                    <div
+                      id="password-strength-bar"
+                      className="h-full rounded-full flex items-center justify-center text-white text-xs font-semibold"
+                      style={{
+                        width: `${passwordStrength.score}%`,
+                        backgroundColor: passwordStrength.color,
+                        transition:
+                          "width 0.3s ease-in-out, background-color 0.3s ease-in-out",
+                      }}
+                    >
+                      {passwordValue.length > 0 && `${passwordStrength.score}%`}
+                    </div>
+                  </div>
+                  <p
+                    id="password-strength-text"
+                    className={`text-xs mt-1 font-semibold`}
+                    style={{ color: passwordStrength.color }}
+                  >
+                    {passwordValue.length > 0 && `${passwordStrength.status}: `}
+                    <span className="font-normal text-gray-600">
+                      {passwordStrength.feedback.length > 0 &&
+                        `Needs ${passwordStrength.feedback.join(", ")}`}
+                    </span>
+                  </p>
                   <FormMessage />
                 </FormItem>
               )}
@@ -194,7 +276,7 @@ const Signup = () => {
         </Form>
         <div className="text-center mt-4">
           <p className="mt-6 text-center text-sm text">
-            Already have an account?{" "}
+            Already have an account?
             <Link
               href="/sign-in"
               className="hover:underline"

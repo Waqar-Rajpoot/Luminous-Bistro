@@ -2,3 +2,19 @@ charts component,
 admin page, 
 backend apis (booking, reviews, orders),
 utility file => monthNames.ts
+
+
+
+order model, shippingSchema, 
+Apis:
+- app/api/coupon-validation/route.js,
+- app/api/stripe-session/route.js ,
+- app/api/orders/[orderId]/route.js   =>   [id]
+
+
+pages:
+ - components/checkout/CartSummary.tsx
+ - components/checkout/ShippingAddressForm.tsx
+ - components/checkout/CouponApplication.tsx
+ - components/checkout/CheckoutPage.tsx
+ - final product page

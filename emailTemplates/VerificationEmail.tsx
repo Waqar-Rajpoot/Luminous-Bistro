@@ -7,15 +7,15 @@ import {
   Row,
   Section,
   Text,
-  Button,
 } from "@react-email/components";
 
 interface VerificationEmailProps {
   username: string;
   otp: string;
+  emailType: "VERIFY" | "RESET";
 }
 
-export default function VerificationEmail({username, otp,}
+export default function VerificationEmail({username, otp, emailType}
   : VerificationEmailProps) {
   return (
     <Html>
@@ -33,10 +33,9 @@ export default function VerificationEmail({username, otp,}
         <Row>
           <Heading as="h2">Hello {username},</Heading>
         </Row>
-
         <Row>
           <Text>
-            Thank you for registering. please do not share this code with anyone
+            Thank you for {emailType === "VERIFY" ? " signing up" : " resetting your password"}. please do not share this code with anyone
             Enter the following code to verify your account
           </Text>
         </Row>

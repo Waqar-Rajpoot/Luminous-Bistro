@@ -6,18 +6,18 @@ import bcrypt from "bcryptjs";
 export async function POST(request: Request) {
   await dbConnect();
   try {
-    const { username, email, password } = await request.json();
+    const {name, username, email, password } = await request.json();
 
-    if (!username || !email || !password) {
+    if (!name || !username || !email || !password) {
       return Response.json(
         { success: false, message: "All fields are required" },
         { status: 400 }
       );
     }
 
-    const existingUserVerifiedByUsername = await UserModel.findOne({ 
-        username,
-        isVerified: true
+    const existingUserVerifiedByUsername = await UserModel.findOne({
+      username,
+      isVerified: true,
     });
 
     if (existingUserVerifiedByUsername) {
@@ -32,38 +32,42 @@ export async function POST(request: Request) {
     const existingUserByEmail = await UserModel.findOne({ email });
 
     if (existingUserByEmail) {
-
-        if(existingUserByEmail.isVerified){
-            return Response.json(
-                { success: false, message: "Email already taken" },
-                { status: 400 }
-            );
-        }else{
-            const hashedPassword = await bcrypt.hash(password, 10);
-            existingUserByEmail.password = hashedPassword;
-            existingUserByEmail.verifyCode = verifyCode;
-            existingUserByEmail.verifyCodeExpire = new Date(Date.now() + 5 * 60000);
-            await existingUserByEmail.save();
-        }
-
-    }else{
+      if (existingUserByEmail.isVerified) {
+        return Response.json(
+          { success: false, message: "Email already taken" },
+          { status: 400 }
+        );
+      } else {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const expiryDate = new Date(Date.now() + 5 * 60000);
+        existingUserByEmail.password = hashedPassword;
+        existingUserByEmail.verifyCode = verifyCode;
+        existingUserByEmail.verifyCodeExpire = new Date(Date.now() + 5 * 60000);
+        await existingUserByEmail.save();
+      }
+    } else {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const expiryDate = new Date(Date.now() + 5 * 60000);
 
-        const newUser = new UserModel({
-            username,
-            email,
-            password: hashedPassword,
-            isVerified: false,
-            verifyCode,
-            verifyCodeExpire: expiryDate
-        })
+      const newUser = new UserModel({
+        name,
+        username,
+        email,
+        password: hashedPassword,
+        isVerified: false,
+        verifyCode,
+        verifyCodeExpire: expiryDate,
+      });
 
-        await newUser.save();
-
+      await newUser.save();
     }
+    const emailType = "VERIFY";
 
-    const emailResponse = await sendVerificationEmail(email, username, verifyCode);
+    const emailResponse = await sendVerificationEmail(
+      email,
+      emailType,
+      username,
+      verifyCode
+    );
 
     if (!emailResponse.success) {
       return Response.json(
@@ -73,7 +77,9 @@ export async function POST(request: Request) {
     }
 
     return Response.json(
-      { success: true, message: "User registered successfully" },
+      {
+        emailType,
+        success: true, message: "User registered successfully" },
       { status: 201 }
     );
   } catch (error) {
