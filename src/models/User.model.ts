@@ -4,6 +4,7 @@ export interface User extends Document {
   name?: string;
   username: string;
   email: string;
+  imageURL?: string;
   password: string;
   role: string;
   isVerified: boolean;
@@ -36,6 +37,9 @@ const UserSchema: Schema<User> = new Schema(
       match: [/.+\@.+\..+/, "Please enter a valid email address"],
       required: [true, "Email is required"],
       unique: true,
+    },
+    imageURL: {
+      type: String,
     },
     password: {
       type: String,

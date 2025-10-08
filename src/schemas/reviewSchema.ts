@@ -6,5 +6,5 @@ export const reviewSchema = z.object({
   rating: z.number().min(1, "Rating must be at least 1.").max(5, "Rating cannot exceed 5."),
   review: z.string().min(20, "Review must be at least 20 characters.").max(500, "Review limited to 500 characters."),
   isApproved: z.boolean().default(false).optional(),
-  user: z.string().optional(),
+  userId: z.string().optional(),
 });

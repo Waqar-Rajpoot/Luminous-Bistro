@@ -1,122 +1,109 @@
-// import { NextResponse } from "next/server";
-// import Order from "@/models/Order.model";
-// import dbConnect from "@/lib/dbConnect";
-// import { getServerSession } from "next-auth";
-// import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-
-// // PATCH: Update an existing order's status
-// export async function PATCH(
-//   request: Request,
-//   { params }: { params: { id: string } }
-// ) {
-//   const { id } = await params;
-//   try {
-//     // Connect to the database
-//     await dbConnect();
-
-//      const session = await getServerSession(authOptions);
-//       if (!session || session.user?.role !== 'admin') {
-//         return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
-//       }
-//     // Parse the request body to get the new status
-//     const { orderStatus } = await request.json();
-
-//     // Find the order by ID and update its status
-//     const updatedOrder = await Order.findByIdAndUpdate(
-//       id,
-//       { orderStatus },
-//       { new: true, runValidators: true }
-//     );
-
-//     if (!updatedOrder) {
-//       return NextResponse.json({ error: "Order not found" }, { status: 404 });
-//     }
-
-//     return NextResponse.json(updatedOrder);
-//   } catch (error) {
-//     console.error("API PATCH error:", error);
-//     return NextResponse.json(
-//       { error: "Failed to update order" },
-//       { status: 500 }
-//     );
-//   }
-// }
-
-// // DELETE: Delete an order by its ID
-// export async function DELETE(
-//   request: Request,
-//   { params }: { params: { id: string } }
-// ) {
-//   const { id } = await params;
-//   try {
-//     // Connect to the database
-//     await dbConnect();
-
-//      const session = await getServerSession(authOptions);
-//       if (!session || session.user?.role !== 'admin') {
-//         return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
-//       }
-//     // Find and delete the order by its ID
-//     const deletedOrder = await Order.findByIdAndDelete(id);
-
-//     if (!deletedOrder) {
-//       return NextResponse.json({ error: "Order not found" }, { status: 404 });
-//     }
-
-//     return NextResponse.json({ message: "Order deleted successfully" });
-//   } catch (error) {
-//     console.error("API DELETE error:", error);
-//     return NextResponse.json(
-//       { error: "Failed to delete order" },
-//       { status: 500 }
-//     );
-//   }
-// }
+import dbConnect from '@/lib/dbConnect'; // Your database connection function
+import OrderModel from '@/models/Order.model'; // Your Mongoose Order Model
 
 
+// Define the expected status types
+type OrderStatus = "pending" | "paid" | "canceled";
+type ShippingProgress = 'processing' | 'shipped' | 'delivered' | 'canceled';
 
 
-// app/api/orders/[orderId]/route.js
-import { NextResponse } from 'next/server';
-import dbConnect from '@/lib/dbConnect';
-import Order from '@/models/Order.model';
-import { z } from 'zod';
+export async function PATCH(request: Request, context: { params: { orderId: string } }) {
+    try {
+        console.log("PATCH request received for order update.");
+        // 1. Get the order ID (assumed to be the MongoDB _id)
+        const orderId = context.params.orderId;
+        
+        // 2. Parse the request body
+        const body = await request.json();
+        const { orderStatus, shippingProgress } = body;
 
-export async function GET(request: Request, { params }: { params: { orderId: string } }) {
-  try {
-    await dbConnect();
-    const { orderId } = params;
+        console.log("Order ID:", orderId);
+        console.log("Order Status:", orderStatus);
+        console.log("Shipping Progress:", shippingProgress);
+        
+        // 3. Validation
+        if (!orderId) {
+            return new Response(JSON.stringify({ error: "Missing Order ID in URL parameter." }), { status: 400 });
+        }
+        
+        if (!orderStatus && !shippingProgress) {
+            return new Response(JSON.stringify({ error: "No update fields provided. Requires 'orderStatus' or 'shippingProgress'." }), { status: 400 });
+        }
+        
+        const updates: { [key: string]: any } = {};
 
-    const order = await Order.findOne({ orderId }).lean();
+        // Validate and stage orderStatus update
+        if (orderStatus) {
+            const validStatuses: OrderStatus[] = ["pending", "paid", "canceled"];
+            if (!validStatuses.includes(orderStatus as OrderStatus)) {
+                return new Response(JSON.stringify({ error: `Invalid orderStatus: ${orderStatus}` }), { status: 400 });
+            }
+            updates.orderStatus = orderStatus;
+        }
 
-    if (!order) {
-      return NextResponse.json({ message: 'Order not found.' }, { status: 404 });
+        // Validate and stage shippingProgress update
+        if (shippingProgress) {
+            const validProgress: ShippingProgress[] = ["processing", "shipped", "delivered", "canceled"];
+            if (!validProgress.includes(shippingProgress as ShippingProgress)) {
+                return new Response(JSON.stringify({ error: `Invalid shippingProgress: ${shippingProgress}` }), { status: 400 });
+            }
+            updates.shippingProgress = shippingProgress;
+        }
+
+        // 4. Database Operation (using Mongoose syntax)
+        await dbConnect(); // Establish a database connection
+
+        const updatedOrder = await OrderModel.findByIdAndUpdate(
+            orderId, 
+            { $set: updates }, // Use $set to update specific fields
+            { new: true }      // Return the updated document after the update is applied
+        );
+
+        if (!updatedOrder) {
+            return new Response(JSON.stringify({ error: `Order with ID ${orderId} not found.` }), { status: 404 });
+        }
+
+        // 5. Success Response
+        return new Response(JSON.stringify(updatedOrder), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+    } catch (error: any) {
+        console.error("API Error during order update:", error.message);
+        return new Response(JSON.stringify({ error: "Server error during update." }), { status: 500 });
     }
-
-    // Ensure _id is mapped to id for frontend consistency if needed
-    const serializedOrder = {
-      ...order,
-      _id: order._id.toString(), // Convert ObjectId to string
-      createdAt: order.createdAt.toISOString(),
-      updatedAt: order.updatedAt.toISOString(),
-      expiresAt: order.expiresAt ? order.expiresAt.toISOString() : undefined, // If applicable
-      items: order.items.map(item => ({
-        ...item,
-        _id: item._id.toString(),
-      })),
-    };
-
-
-    return NextResponse.json(serializedOrder, { status: 200 });
-  } catch (error) {
-    console.error("Error fetching order:", error);
-    if (error instanceof z.ZodError) {
-      return NextResponse.json({ message: "Invalid request data.", errors: error.errors }, { status: 400 });
-    }
-    return NextResponse.json(
-      { message: 'Internal Server Error', error: error.message },
-      { status: 500 }
-    );
-  }
 }
 
+/**
+ * DELETE Handler: Handles order deletion.
+ */
+export async function DELETE(request: Request, context: { params: { orderId: string } }) {
+    try {
+        const orderId = context.params.orderId;
+        
+        if (!orderId) {
+            return new Response(JSON.stringify({ error: "Missing Order ID in URL parameter." }), { status: 400 });
+        }
+
+        await dbConnect(); // Establish a database connection
+        
+        // 1. Database Operation: Use Mongoose to find the order by ID and delete it
+        const deletedOrder = await OrderModel.findByIdAndDelete(orderId);
+
+        if (!deletedOrder) {
+            // If deletedOrder is null, the order was not found
+            return new Response(JSON.stringify({ error: `Order with ID ${orderId} not found for deletion.` }), { status: 404 });
+        }
+
+        // 2. Success Response
+        return new Response(JSON.stringify({ success: true, message: "Order deleted successfully." }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+    } catch (error: any) {
+        console.error("API Error during order deletion:", error.message);
+        return new Response(JSON.stringify({ error: "Server error during deletion." }), { status: 500 });
+    }
+}

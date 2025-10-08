@@ -6,22 +6,19 @@ manager dashboard, analytics,
 admin page analytics(category, product, total customer, bookings, orders, reviews, contact msg, )
 fetch dynamic Reviews responsiveness
 @REM set home and about page  backgourond-image url("url")
-
+admin order page change state of order (error)
 
 product page(progress baar filter)
-when click on product than product page should be open 
-if product already added than button text should be "go to cart page" not "Add to Cart" 
 
 
-pages: 
-    1) order details,
-    2) checkout page,
 
 save discounted amount in database if coupon is applied instead of original price of products 
 
-add menu item form inputs depended on onclick
+add menu item form input fields depended on onclick button to add more
 utilities for: ApiResponse and ApiError
-admin sidebaar scrollbar
-signup page (password strength progress bar)
 
 
+stripe-session, 
+checkout page(components -> checkout -> checkoutPage.tsx)
+models/Coupon.model.js
+app/api/coupon/validate/route.js

@@ -8,15 +8,14 @@ export async function GET() {
     
     const session = await getServerSession(authOptions);
     console.log("User Session is: ",session)
-    if (session?.user?.role !== "admin") {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized to upload image login first" }, { status: 401 });
     }
     const { token, expire, signature} = getUploadAuthParams({
       privateKey: process.env.IMAGEKIT_PRIVATE_KEY as string,
       publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY as string,
     });
     
-    console.log("hello 2 ")
     return Response.json({
        token, expire, signature,
     });

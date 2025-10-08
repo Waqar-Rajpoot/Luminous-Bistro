@@ -104,7 +104,8 @@ const Signup = () => {
   return (
     <div className="min-h-[90vh] flex items-center justify-center p-4">
       <div className="p-8 rounded-xl shadow-lg w-full max-w-md border border-[#efa765]">
-        <h2 className="second-heading mb-6 text-center">Sign up</h2>
+        <h2 className="second-heading mb-2 text-center">Sign up</h2>
+        <h2 className="text-[#efa765] mb-6 text-center">With Luminous Bistro</h2>
         <Form {...form}>
           <form
             action=""
@@ -226,6 +227,8 @@ const Signup = () => {
                       </button>
                     </div>
                   </FormControl>
+                  {passwordValue.length > 0 && (
+                    <>
                   <div className="w-full bg-gray-200 rounded-full h-3 mt-2 overflow-hidden relative">
                     <div
                       id="password-strength-bar"
@@ -237,7 +240,7 @@ const Signup = () => {
                           "width 0.3s ease-in-out, background-color 0.3s ease-in-out",
                       }}
                     >
-                      {passwordValue.length > 0 && `${passwordStrength.score}%`}
+                      {`${passwordStrength.score}%`}
                     </div>
                   </div>
                   <p
@@ -251,6 +254,8 @@ const Signup = () => {
                         `Needs ${passwordStrength.feedback.join(", ")}`}
                     </span>
                   </p>
+                  </>
+                  )}
                   <FormMessage />
                 </FormItem>
               )}

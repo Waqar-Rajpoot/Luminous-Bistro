@@ -6,14 +6,12 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardDescription, CardTitle } from '@/components/ui/card';
 import { X, Plus, Minus } from 'lucide-react';
-import { IAppliedCoupon } from '@/models/Order.model';
 
 interface CartSummaryProps {
   cart: any[];
   handleUpdateQuantity: (product: any, quantity: number) => void;
   handleRemoveItem: (product: any) => void;
   getCartTotal: (withDiscount?: boolean) => number;
-  appliedCoupon?: IAppliedCoupon | null;
   originalCartTotal: number;
 }
 
@@ -22,12 +20,10 @@ const CartSummary: React.FC<CartSummaryProps> = ({
   handleUpdateQuantity,
   handleRemoveItem,
   getCartTotal,
-  appliedCoupon,
-  originalCartTotal,
 }) => {
   return (
     <Card className="p-6 rounded-xl shadow-lg bg-[#1D2B3F] text-[#EFA765]">
-      <h3 className="text-2xl font-bold mb-4 border-b border-[#EFA765]/20 pb-2 font-[Yeseve One]">Order Summary</h3>
+      <h3 className="text-2xl font-bold mb-4 border-b border-[#EFA765]/20 pb-2 yeseva-one">Order Summary</h3>
       
       <div className="space-y-4 mb-6 max-h-[300px] overflow-y-auto pr-2">
         {cart.length === 0 ? (
@@ -44,7 +40,7 @@ const CartSummary: React.FC<CartSummaryProps> = ({
                   className="w-16 h-16 object-cover rounded-md"
                 />
                 <div>
-                  <CardTitle className="text-base font-bold font-[Yeseve One]">{item.name}</CardTitle>
+                  <CardTitle className="text-base font-bold">{item.name}</CardTitle>
                   <CardDescription className="text-sm font-[Varela Round] text-[#EFA765] opacity-70">
                     PKR {(item.price * item.quantity).toFixed(2)} ({item.quantity} x {item.price.toFixed(2)})
                   </CardDescription>
@@ -78,19 +74,7 @@ const CartSummary: React.FC<CartSummaryProps> = ({
         )}
       </div>
 
-      <div className="flex justify-between items-center text-lg font-semibold my-2">
-        <span className="font-[Varela Round] text-white text-opacity-90">Subtotal:</span>
-        <span className="font-[Varela Round] text-white text-opacity-90">PKR {originalCartTotal.toFixed(2)}</span>
-      </div>
-
-      {appliedCoupon && (
-        <div className="flex justify-between items-center text-lg font-semibold my-2 text-green-400">
-          <span className="font-[Varela Round]">Discount ({appliedCoupon.code}):</span>
-          <span className="font-[Varela Round]">- PKR {appliedCoupon.appliedDiscount.toFixed(2)}</span>
-        </div>
-      )}
-
-      <div className="flex justify-between items-center text-xl font-bold my-4 border-t border-[#EFA765]/20 pt-4">
+      <div className="flex justify-between items-center text-xl font-bold border-t border-[#EFA765]/20 pt-4">
         <span className="font-[Yeseve One]">Total:</span>
         <span className="font-[Yeseve One]">PKR {getCartTotal().toFixed(2)}</span>
       </div>

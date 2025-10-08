@@ -18,6 +18,9 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
+    console.log("Booking Data:", body);
+
+
     const validatedData = bookingSchema.parse(body);
 
     // When a new booking is created, it's initially not confirmed

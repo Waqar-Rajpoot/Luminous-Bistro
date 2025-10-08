@@ -7,7 +7,7 @@ export async function GET() {
   try {
     await dbConnect();
 
-    const products = await ProductModel.find({}).lean();
+    const products = await ProductModel.find({isAvailable: true}).lean();
 
     return NextResponse.json(products, { status: 200 });
   } catch (error) {

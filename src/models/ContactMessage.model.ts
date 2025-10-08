@@ -7,7 +7,7 @@ export interface IContactMessage extends Document {
   subject: string;
   message: string;
   isRead: boolean;
-  user: mongoose.Types.ObjectId;
+  userId: mongoose.Types.ObjectId;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -38,7 +38,7 @@ const ContactMessageSchema: Schema<IContactMessage> = new Schema({
     type: Boolean,
     default: false,
   },
-  user: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: false, 
@@ -47,6 +47,6 @@ const ContactMessageSchema: Schema<IContactMessage> = new Schema({
   timestamps: true 
 });
 
-const ContactMessageModel = (mongoose.models.ContactMessage as mongoose.Model<IContactMessage> || mongoose.model<IContactMessage>('Contact-Message', ContactMessageSchema));
+const ContactMessageModel = (mongoose.models.ContactMessage as mongoose.Model<IContactMessage> || mongoose.model<IContactMessage>('ContactMessage', ContactMessageSchema));
 
 export default ContactMessageModel;

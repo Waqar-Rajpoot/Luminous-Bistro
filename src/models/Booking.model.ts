@@ -10,7 +10,7 @@ export interface IBooking extends Document {
   guests: number;
   requests?: string; // Optional field
   isConfirmed: boolean;
-  user: mongoose.Types.ObjectId;
+  userId: mongoose.Types.ObjectId;
   createdAt: Date;
 }
 
@@ -54,7 +54,7 @@ const BookingSchema: Schema<IBooking> = new Schema({
     type: Boolean,
     default: false,
   },
-  user: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User', 
     required: true 

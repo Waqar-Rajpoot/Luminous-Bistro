@@ -1,10 +1,3 @@
-/**
- * Calculates the strength of a given password based on several criteria.
- *
- * @param {string} password - The password string to evaluate.
- * @returns {{score: number, status: string, color: string, feedback: string[]}}
- * An object containing the strength score (0-100), status, color, and feedback messages.
- */
 export const checkPasswordStrength = (password: string) => {
   let score = 0;
   const feedback: string[] = [];

@@ -6,7 +6,7 @@ export const productFormSchema = z.object({
   name: z.string().min(1, { message: "Product name is required." }),
   price: z.number().min(1, "Price must be greater than 0.").max(1000000, "Price too high."),
   category: z.string().min(1, { message: "Category is required." }),
-  description: z.string().min(1, { message: "Description is required." }).max(200, { message: "Description cannot exceed 200 characters." }),
+  // description: z.string().min(1, { message: "Description is required." }).max(200, { message: "Description cannot exceed 200 characters." }),
   imageSrc: z.string().url({ message: "A valid image URL is required." }).min(1, { message: "Product image is required." }),
   isAvailable: z.boolean().default(true),
 });

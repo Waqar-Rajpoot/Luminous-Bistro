@@ -62,7 +62,7 @@ export default function ContactPage() {
 
     data = {
       ...data,
-      user: session.user._id,
+      userId: session.user._id,
     };
 
     try {

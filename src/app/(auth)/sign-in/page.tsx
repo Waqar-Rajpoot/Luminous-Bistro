@@ -57,7 +57,8 @@ const Signin = () => {
   return (
     <div className="min-h-[90vh] flex items-center justify-center p-4">
       <div className="p-8 rounded-xl shadow-lg w-full max-w-md border border-[#efa765]">
-        <h2 className="second-heading mb-6 text-center">Sign in</h2>
+        <h2 className="second-heading mb-1 text-center">Sign in</h2>
+        <h2 className="text-[#efa765] mb-8 text-center">With Luminous Bistro</h2>
         <Form {...form}>
           <form
             action=""

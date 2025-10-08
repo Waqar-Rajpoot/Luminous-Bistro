@@ -12,5 +12,5 @@ export const contactSchema = z.object({
     .max(500, "Message limited to 500 characters."),
   isRead: z
     .boolean().default(false).optional(),
-  user: z.string().optional(),
+  userId: z.string().optional(),
 });

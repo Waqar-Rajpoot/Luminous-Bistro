@@ -197,7 +197,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
-import { ShoppingBag, MapPin, Receipt, Package, Mail } from 'lucide-react';
+import { ShoppingBag, MapPin, Receipt, Mail } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { format } from 'date-fns'; 
@@ -215,11 +215,9 @@ interface OrderDetailsPageProps {
 // Helper to get status color for badge
 const getOrderStatusVariant = (status: IOrder['orderStatus']) => {
   switch (status) {
-    case 'paid': return 'secondary';
-    case 'fulfilled': return 'default';
+    case 'paid': return 'outline';
     case 'pending': return 'outline';
     case 'canceled': return 'destructive';
-    case 'free_completed': return 'success';
     default: return 'outline';
   }
 };
@@ -227,7 +225,6 @@ const getOrderStatusVariant = (status: IOrder['orderStatus']) => {
 async function fetchOrderDetails(orderId: string): Promise<IOrder | null> {
   await dbConnect();
   try {
-    // Find the order by its internal orderId
     const order: any = await Order.findOne({ orderId }).lean();
 
     if (order) {
@@ -239,7 +236,6 @@ async function fetchOrderDetails(orderId: string): Promise<IOrder | null> {
         updatedAt: order.updatedAt.toISOString(),
         items: order.items.map(item => ({
           ...item,
-          // If item._id exists and is an ObjectId, convert it too
           ...(item._id && { _id: item._id.toString() }),
         })),
         // If appliedCoupon has an _id, convert it too
@@ -292,7 +288,7 @@ export default async function OrderDetailsPage({ params, searchParams }: OrderDe
               <h3 className="text-2xl font-bold text-[#EFA765] yeseva-one mb-2 flex items-center"><Receipt className="mr-2 h-6 w-6" /> Summary</h3>
               <p className='text-white/60'><strong>Order ID:</strong> {order.orderId}</p>
               {order.stripeSessionId && <p className='text-white/60 break-all'><strong>Transaction ID:</strong> {order.stripeSessionId}</p>}
-              <p className='text-white/60'><strong>Payment Status:</strong> <Badge variant={getOrderStatusVariant(order.orderStatus)} className="capitalize">{order.orderStatus}</Badge></p>
+              <p className='text-white/60'><strong>Payment Status:</strong> <Badge variant={getOrderStatusVariant(order.orderStatus)} className="capitalize text-white">{order.orderStatus}</Badge></p>
               <p className='text-white/60'><strong>Date:</strong> {format(new Date(order.createdAt), 'PPP p')}</p>
             </div>
             <div>
@@ -312,12 +308,13 @@ export default async function OrderDetailsPage({ params, searchParams }: OrderDe
             <p className='text-white/60'><strong>Recipient:</strong> {order.shippingAddress.fullName}</p>
             <p className='text-white/60'><strong>Address:</strong> {order.shippingAddress.addressLine1}</p>
             {order.shippingAddress.addressLine2 && <p>{order.shippingAddress.addressLine2}</p>}
+            <p className='text-white/60'><strong>Shipping status:</strong> <span className="capitalize border text-white rounded-xl px-2 py-0.2">{order.shippingProgress}</span></p>
             <p className='text-white/60'>{order.shippingAddress.city}, {order.shippingAddress.state} {order.shippingAddress.postalCode}</p>
             <p className='text-white/60'>{order.shippingAddress.country}</p>
           </div>
 
           {/* Applied Coupon */}
-          {order.appliedCoupon && (
+          {/* {order.appliedCoupon && (
             <div className='bg-[#2a3b52] rounded-lg p-4 border border-[#EFA765]/10'>
               <h3 className="text-xl font-bold font-[Yeseve One] mb-2 flex items-center"><Package className="mr-2 h-6 w-6" /> Applied Coupon</h3>
               <div className='text-white/60'>
@@ -326,7 +323,7 @@ export default async function OrderDetailsPage({ params, searchParams }: OrderDe
                 <p><strong>Discount Value:</strong> {order.appliedCoupon.discountValue} {order.appliedCoupon.discountType === 'percentage' ? '%' : 'PKR'}</p>
               </div>
             </div>
-          )}
+          )} */}
 
           <Separator className="bg-[#EFA765]/30 my-4" />
 

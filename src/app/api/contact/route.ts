@@ -5,8 +5,6 @@ import ContactMessageModel, { IContactMessage } from '@/models/ContactMessage.mo
 import { contactSchema } from '@/schemas/contactSchema';
 import { z } from 'zod';
 import { ErrorResponse } from '@/utils/ErrorResponse';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '../auth/[...nextauth]/options';
 
 interface SuccessResponse {
   success: boolean;
@@ -20,12 +18,13 @@ export async function POST(request: Request) {
   await dbConnect();
 
   try {
+
+    console.log("Received contact message request");
     const body = await request.json();
 
-    // The contactSchema should have a default of false for isRead
-    const validatedData = contactSchema.parse(body);
+    console.log("Contact Data:", body);
 
-    console.log("Contact Message Data:", validatedData);
+    const validatedData = contactSchema.parse(body);
 
     const newContactMessage = await ContactMessageModel.create(validatedData);
 
@@ -55,14 +54,7 @@ export async function POST(request: Request) {
 // --- GET (Fetch all messages for admin panel) ---
 export async function GET() {
   await dbConnect();
-
-  console.log("hello from get contact messages"); 
-
-  const session = await getServerSession(authOptions);
-  if (!session || session.user?.role !== 'admin') {
-    return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
-  }
-
+console.log("Fetching contact messages...");
   try {
     const contactMessages = await ContactMessageModel.find({}).sort({ createdAt: -1 }); // Sort by newest first
     return NextResponse.json<SuccessResponse>({

@@ -26,5 +26,5 @@ export const bookingSchema = z.object({
     .max(200, "Special requests limited to 200 characters.")
     .optional(),
   isConfirmed: z.boolean().default(false).optional(),
-  user: z.string().optional(),
+  userId: z.string().optional(),
 });

@@ -1,14 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Plus, Star, Users } from "lucide-react";
+import { Star, Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Loader2 } from "lucide-react";
 import axios, { AxiosResponse } from "axios";
 
 import Link from "next/link";
-// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"; // Assuming you have Shadcn Card components
 import {
   Utensils,
   Box, // For Reviews
@@ -78,11 +77,10 @@ export default function AdminDashboard() {
 
   return (
     <>
-      {/* <Reviews /> */}
       <h1 className="first-heading sm:text-5xl font-bold text-[#efa765] text-center">
         Admin Dashboard
       </h1>
-      <div className="min-h-screen bg-gray-950 p-6 rounded-xl sm:p-10 text-white font-sans">
+      <div className="min-h-screen p-6 rounded-xl sm:p-10 text-white font-sans">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <p className="mt-2 second-heading text-2xl text-gray-400">

@@ -53,7 +53,7 @@ export default function ReviewsPage() {
 
     data = {
       ...data,
-      user: session.user._id,
+      userId: session.user._id,
     };
 
     // console.log('Review Submission Details:', data);

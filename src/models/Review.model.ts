@@ -6,7 +6,7 @@ export interface IReview extends Document {
   rating: number;
   review: string;
   isApproved: boolean;
-  user: mongoose.Types.ObjectId;
+  userId: mongoose.Types.ObjectId;
   createdAt: Date;
 }
 
@@ -37,7 +37,7 @@ const ReviewSchema: Schema<IReview> = new Schema(
       type: Boolean,
       default: false,
     },
-    user: {
+    userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,

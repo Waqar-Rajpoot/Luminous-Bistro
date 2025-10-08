@@ -8,7 +8,6 @@ import { authOptions } from '../../auth/[...nextauth]/options';
 // Connect to MongoDB
 dbConnect();
 
- 
 // GET all menus
 export async function GET() {
  
@@ -29,6 +28,8 @@ export async function POST(request: NextRequest) {
   }
   try {
     const body = await request.json();
+
+    console.log("Request body fot menu:", body);
 
     // Validate request body with Zod
     const validationResult = menuSchema.safeParse(body);

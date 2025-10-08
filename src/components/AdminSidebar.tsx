@@ -1,4 +1,3 @@
-// src/components/AdminSheetNav.tsx
 'use client';
 
 import Link from 'next/link';
@@ -9,12 +8,11 @@ import {
   LayoutDashboard,
   Settings,
   Menu,
-  Star, // For Reviews
-  MessageSquare, // For Contact Messages
-  CalendarCheck, // For Booked Tables
-  ListOrdered, // Added for Order Management
+  Star, 
+  MessageSquare, 
+  CalendarCheck, 
+  ListOrdered,
   Users,
-  Plus
 } from 'lucide-react';
 import {
   Sheet,
@@ -60,16 +58,16 @@ export default function AdminSheetNav() {
           borderColor: "rgb(239, 167, 101)",
         }}
       >
-        <SheetHeader className="pb-6 border-b" style={{ borderColor: "rgb(239, 167, 101)" }}>
-          <SheetTitle className="yeseva-one text-3xl font-bold text-[#efa765] text-center">Admin Panel</SheetTitle>
+        <SheetHeader className="pb-2 border-b" style={{ borderColor: "rgb(239, 167, 101)" }}>
+          <SheetTitle className="yeseva-one text-2xl font-bold text-[#efa765] text-center">Admin Panel</SheetTitle>
         </SheetHeader>
         <nav className="flex flex-col space-y-4 mt-6">
-          <ul className="space-y-4">
+          <ul className="space-y-2">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className={`flex items-center p-3 rounded-lg transition-colors
+                <Link href={link.href} className={`flex items-center p-2 rounded-lg transition-colors text-sm
                   ${pathname === link.href ? 'bg-[#efa765] text-[#141f2d] font-bold shadow-md' : 'hover:bg-gray-700 text-gray-300'}`}>
-                  <link.icon className="mr-3 h-5 w-5" />
+                  <link.icon className="mr-2 h-3.5 w-3.5" />
                   {link.label}
                 </Link>
               </li>

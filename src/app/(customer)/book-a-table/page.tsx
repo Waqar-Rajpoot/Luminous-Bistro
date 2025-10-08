@@ -55,7 +55,7 @@ export default function BookATablePage() {
 
     data = {
       ...data,
-      user: session.user._id,
+      userId: session.user._id,
     };
 
     try {
