@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     const validatedData = bookingSchema.parse(body);
 
     // When a new booking is created, it's initially not confirmed
-    const newBooking = await BookingModel.create({ ...validatedData, isConfirmed: false });
+    const newBooking = await BookingModel.create({ ...validatedData, isConfirmed: "pending" });
 
     return NextResponse.json<SuccessResponse>(
       {

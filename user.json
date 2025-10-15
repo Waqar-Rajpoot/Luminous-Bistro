@@ -1,0 +1,952 @@
+[
+  {
+    "name": "Waqar Rajpoot",
+    "username": "waqar",
+    "email": "waqar.softwaredev@gmail.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100001",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:06:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:01:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:01:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Ahmed Manager",
+    "username": "ahmed_mgr",
+    "email": "ahmed.manager@business.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": true,
+    "verifyCode": "100002",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:07:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:02:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:02:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Fatima User",
+    "username": "fatima_user",
+    "email": "fatima.client@portal.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": false,
+    "verifyCode": "100003",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:08:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:03:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:03:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Bilal Admin",
+    "username": "bilal_a",
+    "email": "bilal.sysadmin@corp.org",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100004",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:09:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:04:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:04:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Sana Team Lead",
+    "username": "sana_lead",
+    "email": "sana.teamlead@firm.co",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": true,
+    "verifyCode": "100005",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:10:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:05:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:05:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Kamran Dev",
+    "username": "kamran_dev",
+    "email": "kamran.developer@tech.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": true,
+    "verifyCode": "100006",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:11:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:06:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:06:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Hina Admin",
+    "username": "hina_admin",
+    "email": "hina.global@domain.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100007",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:12:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:07:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:07:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Usman Manager",
+    "username": "usman_ops",
+    "email": "usman.operations@corp.org",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": false,
+    "verifyCode": "100008",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:13:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:08:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:08:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Zainab Client",
+    "username": "zainab_c",
+    "email": "zainab.customer@mail.co",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": true,
+    "verifyCode": "100009",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:14:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:09:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:09:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Asif System",
+    "username": "asif_sys",
+    "email": "asif.systems@service.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100010",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:15:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:10:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:10:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Sara Coordinator",
+    "username": "sara_coord",
+    "email": "sara.coord@email.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": true,
+    "verifyCode": "100011",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:16:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:11:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:11:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Ali Guest",
+    "username": "ali_guest",
+    "email": "ali.guest@inbox.org",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": true,
+    "verifyCode": "100012",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:17:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:12:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:12:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Nida Dev Lead",
+    "username": "nida_d_l",
+    "email": "nida.devlead@tech.co",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100013",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:18:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:13:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:13:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Omar HR",
+    "username": "omar_hr",
+    "email": "omar.hr@business.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": true,
+    "verifyCode": "100014",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:19:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:14:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:14:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Samina User",
+    "username": "samina_u",
+    "email": "samina.client@web.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": false,
+    "verifyCode": "100015",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:20:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:15:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:15:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Tariq Systems",
+    "username": "tariq_sys",
+    "email": "tariq.systems@domain.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100016",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:21:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:16:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:16:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Maria Project",
+    "username": "maria_proj",
+    "email": "maria.project@corp.org",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": true,
+    "verifyCode": "100017",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:22:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:17:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:17:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Junaid Guest",
+    "username": "junaid_g",
+    "email": "junaid.guest@portal.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": true,
+    "verifyCode": "100018",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:23:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:18:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:18:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Ayesha Tech",
+    "username": "ayesha_t",
+    "email": "ayesha.tech@tech.co",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100019",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:24:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:19:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:19:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Fahad Ops",
+    "username": "fahad_ops",
+    "email": "fahad.ops@firm.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": false,
+    "verifyCode": "100020",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:25:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:20:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:20:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Noor Client",
+    "username": "noor_client",
+    "email": "noor.client@email.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": true,
+    "verifyCode": "100021",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:26:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:21:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:21:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Rizwan Dev",
+    "username": "rizwan_dev",
+    "email": "rizwan.dev@domain.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100022",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:27:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:22:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:22:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Hassan Manager",
+    "username": "hassan_m",
+    "email": "hassan.mgr@business.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": true,
+    "verifyCode": "100023",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:28:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:23:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:23:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Kiran User",
+    "username": "kiran_u",
+    "email": "kiran.user@corp.org",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": false,
+    "verifyCode": "100024",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:29:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:24:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:24:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Zahid Admin",
+    "username": "zahid_a",
+    "email": "zahid.sys@portal.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100025",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:30:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:25:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:25:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Iqra PM",
+    "username": "iqra_pm",
+    "email": "iqra.pm@tech.co",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": true,
+    "verifyCode": "100026",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:31:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:26:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:26:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Imran Dev",
+    "username": "imran_dev",
+    "email": "imran.dev@firm.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": true,
+    "verifyCode": "100027",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:32:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:27:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:27:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Laila Security",
+    "username": "laila_sec",
+    "email": "laila.security@domain.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100028",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:33:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:28:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:28:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Naveed Sales",
+    "username": "naveed_s",
+    "email": "naveed.sales@business.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": false,
+    "verifyCode": "100029",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:34:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:29:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:29:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Sadia Customer",
+    "username": "sadia_cust",
+    "email": "sadia.cust@corp.org",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": true,
+    "verifyCode": "100030",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:35:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:30:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:30:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Yasir Global",
+    "username": "yasir_g",
+    "email": "yasir.global@portal.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100031",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:36:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:31:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:31:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Qasim Ops",
+    "username": "qasim_ops",
+    "email": "qasim.ops@tech.co",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": true,
+    "verifyCode": "100032",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:37:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:32:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:32:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Reema Guest",
+    "username": "reema_g",
+    "email": "reema.guest@firm.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": false,
+    "verifyCode": "100033",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:38:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:33:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:33:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Zeeshan Systems",
+    "username": "zeeshan_sys",
+    "email": "zeeshan.sys@email.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100034",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:39:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:34:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:34:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Mehak HR",
+    "username": "mehak_hr",
+    "email": "mehak.hr@business.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": true,
+    "verifyCode": "100035",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:40:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:35:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:35:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Haris Client",
+    "username": "haris_c",
+    "email": "haris.client@corp.org",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": true,
+    "verifyCode": "100036",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:41:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:36:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:36:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Erum Dev",
+    "username": "erum_dev",
+    "email": "erum.developer@portal.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100037",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:42:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:37:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:37:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Saad Manager",
+    "username": "saad_mgr",
+    "email": "saad.manager@tech.co",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": false,
+    "verifyCode": "100038",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:43:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:38:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:43:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Naila User",
+    "username": "naila_u",
+    "email": "naila.user@firm.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": true,
+    "verifyCode": "100039",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:44:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:39:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:39:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Daniyal Global",
+    "username": "daniyal_g",
+    "email": "daniyal.global@domain.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100040",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:45:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:40:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:40:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Ayesha Ops",
+    "username": "ayesha_ops",
+    "email": "ayesha.ops@business.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": true,
+    "verifyCode": "100041",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:46:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:41:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:41:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Faisal Guest",
+    "username": "faisal_g",
+    "email": "faisal.guest@corp.org",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": false,
+    "verifyCode": "100042",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:47:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:42:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:42:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Huma Security",
+    "username": "huma_sec",
+    "email": "huma.security@portal.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100043",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:48:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:43:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:43:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Jawad Sales",
+    "username": "jawad_s",
+    "email": "jawad.sales@tech.co",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": true,
+    "verifyCode": "100044",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:49:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:44:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:44:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Laraib User",
+    "username": "laraib_u",
+    "email": "laraib.client@firm.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": true,
+    "verifyCode": "100045",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:50:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:45:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:45:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Musa Systems",
+    "username": "musa_sys",
+    "email": "musa.systems@email.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100046",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:51:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:46:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:46:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Palwasha PM",
+    "username": "palwasha_pm",
+    "email": "palwasha.pm@business.com",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": false,
+    "verifyCode": "100047",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:52:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:47:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:47:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Salman Dev",
+    "username": "salman_dev",
+    "email": "salman.dev@corp.org",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "user",
+    "isVerified": true,
+    "verifyCode": "100048",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:53:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:48:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:48:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Uzma Tech Lead",
+    "username": "uzma_tl",
+    "email": "uzma.techlead@portal.net",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "admin",
+    "isVerified": true,
+    "verifyCode": "100049",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:54:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:49:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:49:01.018Z"
+    },
+    "__v": 0
+  },
+  {
+    "name": "Zohaib Coordinator",
+    "username": "zohaib_coord",
+    "email": "zohaib.coord@tech.co",
+    "password": "$2b$10$XNrTYCDThlNCqXL9VH3VPeH.hPxtEIeh1tQGvZsHFv6gFix3zZQh.",
+    "role": "manager",
+    "isVerified": true,
+    "verifyCode": "100050",
+    "verifyCodeExpire": {
+      "$date": "2025-11-01T10:55:00.001Z"
+    },
+    "createdAt": {
+      "$date": "2025-11-01T10:50:00.018Z"
+    },
+    "updatedAt": {
+      "$date": "2025-11-01T10:50:01.018Z"
+    },
+    "__v": 0
+  }
+]

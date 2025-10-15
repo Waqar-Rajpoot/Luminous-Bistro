@@ -13,7 +13,7 @@ export const UserOrders = ({ orders }: any) => {
       ) : (
         <div className="max-h-[400px] overflow-y-auto pr-2">
           <ul className="space-y-4">
-            {orders.map((order) => (
+            {orders.map((order : any) => (
               <li
                 key={order._id}
                 className="border-b border-slate-700 pb-4 last:border-b-0"
@@ -31,7 +31,7 @@ export const UserOrders = ({ orders }: any) => {
                     </p>
                     <p>Shipping Status:
                     <span
-                      className={`mt-2 sm:mt-0 ml-2 px-2 rounded-full text-xs font-semibold uppercase ${order.shippingProgress === "processing" ? "bg-yellow-500 text-slate-800" : order.shippingProgress === "shipped" ? "bg-blue-500 text-slate-800" : order.shippingProgress === "delivered" ? "bg-green-500 text-slate-800" : order.shippingProgress === "canceled" ? "bg-red-500 text-white" : "bg-gray-500 text-white"}`}
+                      className={`mt-2 sm:mt-0 ml-2 px-2 py-1 rounded-full text-xs font-semibold uppercase border ${order.shippingProgress === "processing" ? "bg-yellow-700/20 text-yellow-300 border-yellow-700" : order.shippingProgress === "shipped" ? "bg-blue-700/20 text-blue-300 border-blue-700/40" : order.shippingProgress === "delivered" ? "bg-green-700/20 text-green-300 border-green-700/40" : order.shippingProgress === "canceled" ? "bg-red-700/20 text-red-300 border-red-700/40" : "bg-gray-700/20 text-gray-300 border-gray-700/40"}`}
                     >
                       {order.shippingProgress}
                     </span>
@@ -43,9 +43,8 @@ export const UserOrders = ({ orders }: any) => {
                       Placed on {new Date(order.createdAt).toLocaleDateString()}
                     </p>
                   </div>
-
                   <span
-                    className={`mt-2 sm:mt-0 px-3 py-1 rounded-full text-xs font-semibold uppercase ${order.orderStatus === "paid" ? "bg-green-500 text-slate-800" : "bg-yellow-500 text-white"}`}
+                    className={`mt-2 sm:mt-0 px-3 py-1 rounded-full text-xs font-semibold uppercase border ${order.orderStatus === "paid" ? "bg-green-700/20 text-green-300 border-green-700/20" : order.orderStatus === "pending" ? "bg-yellow-700/20 text-yellow-300 border-yellow-700/40" : order.orderStatus === "canceled" ? "bg-red-700/20 text-red-300 border-red-700/40" : "bg-gray-700/20 text-gray-300 border-gray-700/40"}`}
                   >
                     {order.orderStatus}
                   </span>

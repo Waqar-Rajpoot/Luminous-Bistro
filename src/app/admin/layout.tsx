@@ -5,9 +5,8 @@ import React, { Suspense } from 'react';
 import { Loader2 } from 'lucide-react';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
-import { authOptions } from '../../api/auth/[...nextauth]/options';
-// import AdminSheetNav from '@/components/AdminSidebar'; // Assuming this is where AdminSheetNav is located
 import AdminSheetNav from '@/components/AdminSidebar';
+import { authOptions } from '../api/auth/[...nextauth]/options';
 
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {

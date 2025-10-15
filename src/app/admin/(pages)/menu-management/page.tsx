@@ -566,7 +566,7 @@ export default function MenuManagementPage() {
       <section className="mb-12 bg-gray-800/80 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-[#efa765]/50">
         <div className="flex justify-between items-center mb-6 border-b border-gray-700 pb-4">
           <h2 className="yeseva-one text-[rgb(239,167,101)] text-3xl font-bold flex items-center">
-             <ShoppingBag className="h-6 w-6 mr-3" /> Menu Categories
+            <ShoppingBag className="h-6 w-6 mr-3" /> Menu Categories
           </h2>
 
           <MenuFormDialog

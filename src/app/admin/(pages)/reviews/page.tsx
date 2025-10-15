@@ -758,10 +758,10 @@ export default function AdminReviewsPage() {
                             variant={
                               review.isApproved ? "default" : "destructive"
                             }
-                            className={`px-3 py-1 text-sm font-semibold ${
+                            className={`px-3 py-1 text-sm ${
                               review.isApproved
-                                ? "bg-green-600 hover:bg-green-700"
-                                : "bg-red-600 hover:bg-red-700"
+                                ? "bg-green-700/20 text-green-300 border-green-700/40 hover:bg-green-700/10"
+                                : "bg-red-700/20 text-red-300 border-red-700/40 hover:bg-red-700/10</TableCell>"
                             }`}
                           >
                             {review.isApproved ? "Approved" : "Pending"}
@@ -812,7 +812,7 @@ export default function AdminReviewsPage() {
                                   variant="ghost"
                                   size="icon"
                                   disabled={isActionLoading}
-                                  className="h-8 w-8 text-red-500 hover:bg-red-500/10 transition-colors"
+                                  className="h-8 w-8 bg-red-700/20 text-red-300 border-red-700/40 hover:bg-red-700/10 transition-colors"
                                 >
                                   <Trash2 className="h-4 w-4" />
                                   <span className="sr-only">Delete</span>

@@ -22,11 +22,11 @@ export const UserProfile = ({ user }: { user: UserData }) => {
 
         <div className="text-center md:text-left space-y-2">
           <h2 className="text-3xl font-bold text-white">
-            {user.name || "N/A"}
+            <span className="text-[#EFA]">Hello</span>, {user.name || "N/A"}
           </h2>
-          <p className="text-gray-400">{user.email || "N/A"}</p>
-          <p className="text-gray-400">{user.username || "N/A"}</p>
-          <span className="mt-3 inline-block px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full shadow-md">
+          <p className="text-gray-400"><span className="font-bold text-gray-300">Email:</span> {user.email || "N/A"}</p>
+          <p className="text-gray-400"><span className="font-bold text-gray-300">Username: </span>{user.username || "N/A"}</p>
+          <span className="mt-3 inline-block px-3 py-1 bg-[#EFA] text-gray-900 text-md font-semibold rounded-full shadow-md">
             Role: {user.role || "user"}
           </span>
         </div>

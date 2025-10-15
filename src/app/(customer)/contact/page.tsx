@@ -388,13 +388,13 @@ export default function ContactPage() {
                     <CarouselItem key={review._id}>
                       <div className="text-center p-4">
                         {renderStars(review.rating)}   
-                        <p className="text-white italic text-lg mb-3">
+                        <p className="text-white italic text-lg mb-3 flex items-center justify-center">
                           {review.review}                        
                         </p>
                                    
-                        <p className="text-[#efa765] font-semibold">
-                          - {review.name}
-                        </p>{" "}
+                        <p className="text-[#efa765] font-semibold text-xl">
+                          ~{review.name}
+                        </p>
                                        
                       </div>
                                    

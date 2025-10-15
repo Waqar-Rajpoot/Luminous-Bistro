@@ -12,16 +12,21 @@ import { UserReviews } from "@/components/user-dashboard/UserReviews";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-export default async function DashboardPage() {
-  const session = await getServerSession(authOptions);
-  console.log("session", session);
+export default async function DashboardPage({
+  params,
+}: {
+  params: { userId: string };
+}) {
+  const { userId } = await params;
 
+
+  const session = await getServerSession(authOptions);
   if (!session || !session.user) {
-    redirect("/auth/sign-in");
+    redirect("/sign-in");
   }
 
   try {
-    const userId = session.user._id;
+    // const userId = session.user._id;
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/dashboard/${userId}`
     );
@@ -99,7 +104,7 @@ export default async function DashboardPage() {
         </div>
       </div>
     );
-  } catch (error) {
+  } catch (error: any) {
     console.error("Server-side data fetching error:", error);
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white">

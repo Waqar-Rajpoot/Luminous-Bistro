@@ -1,24 +1,14 @@
 
 
-user dashboard, analytics,
-staff dashboard, anylytics(optional)
-manager dashboard, analytics,
-admin page analytics(category, product, total customer, bookings, orders, reviews, contact msg, )
-fetch dynamic Reviews responsiveness
-@REM set home and about page  backgourond-image url("url")
-admin order page change state of order (error)
-
-product page(progress baar filter)
-
-
-
-save discounted amount in database if coupon is applied instead of original price of products 
-
-add menu item form input fields depended on onclick button to add more
-utilities for: ApiResponse and ApiError
+1)  user dashboard stats(cards)
+2)  admin user management page(delete, update user role, staff presents)
+3)  staff dashboard, anylytics(optional)
+4)  manager dashboard, analytics,
+5)  admin page analytics(category, product, total customer, bookings, orders, reviews, contact msg)
+6)  set home and about page  backgourond-image url("url")
+7)  product page(progress baar filter)
+8)  add menu item form input fields depended on onclick button to add more
+9)  utilities for: ApiResponse and ApiError
 
 
-stripe-session, 
-checkout page(components -> checkout -> checkoutPage.tsx)
-models/Coupon.model.js
-app/api/coupon/validate/route.js
+

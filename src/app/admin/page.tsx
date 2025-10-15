@@ -17,6 +17,8 @@ import {
 } from "lucide-react"; // Import new icons
 import OverviewCards from "./components/OverviewCards";
 import ReviewsChart from "./components/Charts";
+import UserProfile from "@/components/user-dashboard/UserProfile";
+import { useSession } from "next-auth/react";
 
 interface DashboardStatsData {
   reviews: number;
@@ -36,6 +38,10 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState<DashboardStatsData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const { data: session } = useSession();
+  const user: any = session?.user;
+  
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -74,18 +80,12 @@ export default function AdminDashboard() {
       </div>
     );
   }
-
   return (
     <>
-      <h1 className="first-heading sm:text-5xl font-bold text-[#efa765] text-center">
-        Admin Dashboard
-      </h1>
       <div className="min-h-screen p-6 rounded-xl sm:p-10 text-white font-sans">
+      <UserProfile user={user} />
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
-            <p className="mt-2 second-heading text-2xl text-gray-400">
-              Analytics & Key Metrics
-            </p>
           </div>
           {error && (
             <div className="text-center p-4 mb-4 text-red-500 bg-red-900 rounded-lg">

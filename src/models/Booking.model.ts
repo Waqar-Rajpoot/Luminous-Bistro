@@ -9,7 +9,7 @@ export interface IBooking extends Document {
   time: string; // Storing as string to match input type (HH:MM)
   guests: number;
   requests?: string; // Optional field
-  isConfirmed: boolean;
+  isConfirmed: 'pending' | 'confirmed' | 'canceled';
   userId: mongoose.Types.ObjectId;
   createdAt: Date;
 }
@@ -51,8 +51,9 @@ const BookingSchema: Schema<IBooking> = new Schema({
     default: '',
   },
   isConfirmed: {
-    type: Boolean,
-    default: false,
+    type: String,
+    enum: ['pending', 'confirmed', 'canceled'],
+    default: 'pending',
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,

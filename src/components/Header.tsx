@@ -286,8 +286,8 @@ import { LogOut, LayoutDashboard, LogIn } from "lucide-react";
 // Extend the NextAuth User type to include your custom 'role' property
 declare module "next-auth" {
   interface User {
-    role?: "user" | "admin" | "manager" | "staff";
-    username?: string | null;
+    role?: string | undefined;
+    username?: string | undefined;
   }
 }
 
@@ -296,6 +296,10 @@ export default function Header() {
   const user: User | undefined = session?.user as User | undefined;
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
+
+  
+   
+    const userId = session?.user._id;
 
   useEffect(() => {
     // Measure the header height after it mounts
@@ -328,11 +332,11 @@ export default function Header() {
       case "admin":
         return { href: "/admin", text: "Admin Panel" };
       case "manager":
-        return { href: "/manager-dashboard", text: "Manager Dashboard" };
+        return { href: `/manager-dashboard/${userId}`, text: "Manager Dashboard" };
       case "user":
-        return { href: "/user-dashboard", text: "My Dashboard" };
+        return { href: `/user-dashboard/${userId}`, text: "My Dashboard" };
       case "staff":
-        return { href: "/staff-dashboard", text: "Staff Dashboard" };
+        return { href: `/staff-dashboard/${userId}`, text: "Staff Dashboard" };
       default:
         return null;
     }

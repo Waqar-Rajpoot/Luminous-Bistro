@@ -38,9 +38,6 @@ const UserSchema: Schema<User> = new Schema(
       required: [true, "Email is required"],
       unique: true,
     },
-    imageURL: {
-      type: String,
-    },
     password: {
       type: String,
       required: [true, "Password is required"],

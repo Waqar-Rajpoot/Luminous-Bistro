@@ -30,7 +30,7 @@
 "use client";
 import React from "react";
 
-export const UserBookings = ({ bookings }) => {
+export const UserBookings = ({ bookings }: any) => {
   return (
     // Ensure width is set to full for better dashboard layout integration
     <div className="bg-slate-800 p-6 rounded-lg shadow-lg w-full max-w-2xl">
@@ -44,14 +44,14 @@ export const UserBookings = ({ bookings }) => {
         // --- Added Fixed Height (max-h-[400px]) and Vertical Scrolling (overflow-y-auto) ---
         <div className="max-h-[400px] overflow-y-auto pr-2">
           <ul className="space-y-4">
-            {bookings.map((booking) => (
+            {bookings.map((booking: any) => (
               <li
                 key={booking._id}
                 className="border-b border-slate-700 pb-4 last:border-b-0 p-3 rounded-lg hover:bg-slate-700 transition-colors duration-200"
               >
                 <div className="flex justify-between items-start">
                   <div>
-                    {/* Assuming the Booking ID is not meant to be a clickable link here */}
+                    
                     <p className="font-semibold text-white">
                       Booking for: {booking.name}
                     </p>
@@ -66,9 +66,9 @@ export const UserBookings = ({ bookings }) => {
                     </p>
                   </div>
                   <span
-                    className={`mt-1 px-3 py-1 rounded-full text-xs font-semibold uppercase ${booking.isConfirmed === true ? "bg-green-500 text-slate-800" : "bg-yellow-500 text-slate-800"}`}
+                    className={`mt-1 px-3 py-1 rounded-full text-xs font-semibold uppercase ${booking.isConfirmed === "confirmed" ? "bg-green-700/20 text-green-300 border-green-700/40 border" : `${booking.isConfirmed === "pending" ? "bg-yellow-700/20 text-yellow-300 border-yellow-700/40 border" : `${booking.isConfirmed === "canceled" ? "bg-red-700/20 text-red-300 border-red-700/40 border" : "bg-gray-700/20 text-gray-300 border-gray-700/40 border"}`}`}`}
                   >
-                    {booking.isConfirmed === true ? "Confirmed" : "Pending"}
+                    {booking.isConfirmed === "confirmed" ? "Confirmed" : `${booking.isConfirmed === "pending" ? "Pending" : `${booking.isConfirmed === "canceled" ? "Canceled" : "Unknown"}`}`}
                   </span>
                 </div>
               </li>

@@ -30,12 +30,12 @@ export async function PATCH(
     const { isConfirmed } = await request.json();
 
     // Ensure isConfirmed is a boolean
-    if (typeof isConfirmed !== 'boolean') {
-      return NextResponse.json<ErrorResponse>(
-        { success: false, message: "Invalid 'isConfirmed' status provided." },
-        { status: 400 }
-      );
-    }
+    // if (typeof isConfirmed !== 'boolean') {
+    //   return NextResponse.json<ErrorResponse>(
+    //     { success: false, message: "Invalid 'isConfirmed' status provided." },
+    //     { status: 400 }
+    //   );
+    // }
 
     const updatedBooking = await BookingModel.findByIdAndUpdate(
       bookingId,
@@ -50,7 +50,7 @@ export async function PATCH(
       );
     }
 
-    const statusMessage = updatedBooking.isConfirmed ? "confirmed" : "marked as pending";
+    const statusMessage = updatedBooking.isConfirmed === "confirmed" ? "confirmed" : updatedBooking.isConfirmed === "canceled" ? "canceled" : "set to pending";
     return NextResponse.json<SuccessResponse>(
       {
         success: true,
