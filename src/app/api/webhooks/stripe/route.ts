@@ -2,7 +2,6 @@ import { NextResponse, NextRequest } from 'next/server';
 import Stripe from 'stripe';
 import dbConnect from '@/lib/dbConnect';
 import Order from '@/models/Order.model';
-import Product from '@/models/Product.model'; // Assuming you have a Product model to get original prices
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2022-11-15",

@@ -12,7 +12,6 @@ import {
   MapPin,
   Utensils,
   BookOpen,
-  Users,
   CalendarCheck,
   ToggleLeft,
   ToggleRight,
@@ -95,8 +94,7 @@ export default function RestaurantSettingsPage() {
     e.preventDefault();
     setIsSaving(true);
     try {
-      // Send only the necessary fields, excluding _id
-      const { _id, ...updatePayload } = settings; 
+      const {...updatePayload } = settings; 
       
       await axios.patch(`/api/settings`, updatePayload);
       toast.success("Restaurant settings updated successfully!");

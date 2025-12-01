@@ -18,7 +18,6 @@ export async function PATCH(
   await dbConnect();
   const { bookingId } = await params;
 
-  // Basic validation for ObjectId
   if (!mongoose.Types.ObjectId.isValid(bookingId)) {
     return NextResponse.json<ErrorResponse>(
       { success: false, message: "Invalid booking ID." },
@@ -28,14 +27,6 @@ export async function PATCH(
 
   try {
     const { isConfirmed } = await request.json();
-
-    // Ensure isConfirmed is a boolean
-    // if (typeof isConfirmed !== 'boolean') {
-    //   return NextResponse.json<ErrorResponse>(
-    //     { success: false, message: "Invalid 'isConfirmed' status provided." },
-    //     { status: 400 }
-    //   );
-    // }
 
     const updatedBooking = await BookingModel.findByIdAndUpdate(
       bookingId,

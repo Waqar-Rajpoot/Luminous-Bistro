@@ -27,7 +27,7 @@ export const UserProfile = ({ user }: { user: UserData }) => {
           <p className="text-gray-400"><span className="font-bold text-gray-300">Email:</span> {user.email || "N/A"}</p>
           <p className="text-gray-400"><span className="font-bold text-gray-300">Username: </span>{user.username || "N/A"}</p>
           <span className="mt-3 inline-block px-3 py-1 bg-[#EFA] text-gray-900 text-md font-semibold rounded-full shadow-md">
-            Role: {user.role || "user"}
+            Role: {user.role}
           </span>
         </div>
       </div>

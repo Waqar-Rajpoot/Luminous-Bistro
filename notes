@@ -12,3 +12,38 @@
 
 
 
+
+
+
+
+//!===============================  AI Notes  ============================ //
+
+prompt engineering:
+ Zero-shot,
+ Few-shot,
+ Chain-of-thought
+
+
+Best Prompt Techniques:
+ 1) Start simple and itrative => improve prompt step by step,
+ 2) Clear instruction => instruction, input, ask for output
+ 3) Be spacific and detailed => To the point instruction,
+ 4) Give required output formate example for better results
+ 5) Don't give negative info => Tell what to do instead not do this/that
+ 6) Move from Easy to complex => simple short to few short
+ 7) Reduce unecessary info => tell quantity of text for results in 2/3 lines
+ 8) Give leading points or starting points => import, SELECT in sql
+
+
+Structured Output:
+ 1) Give example in prompt to get structure output like json data etc,
+ 2) Example in pormpt & add property "response_format: {type: 'json_object'}"
+ 3) use instructor library it will validate and retries for required output
+ 4) provide proper json schema for required output(not properly supported)
+
+Tool calling:
+ To access external resources real time data,API call, db call, web search etc
+ web serching techs:
+ 1) serper
+ 2) Brave search api
+ 3) Tavily

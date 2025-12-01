@@ -1,335 +1,3 @@
-// "use client";
-
-// import { useState, useEffect, useCallback } from "react";
-// import axios, { AxiosError } from "axios";
-// import { toast } from "sonner";
-// import { Loader2, Mail, MailOpen, Trash2 } from "lucide-react";
-// import { format } from "date-fns";
-// import { Button } from "@/components/ui/button";
-// import { Badge } from "@/components/ui/badge";
-// import {
-//   AlertDialog,
-//   AlertDialogAction,
-//   AlertDialogCancel,
-//   AlertDialogContent,
-//   AlertDialogDescription,
-//   AlertDialogFooter,
-//   AlertDialogHeader,
-//   AlertDialogTitle,
-//   AlertDialogTrigger,
-// } from "@/components/ui/alert-dialog";
-// import {
-//   Dialog,
-//   DialogContent,
-//   DialogHeader,
-//   DialogTitle,
-// } from "@/components/ui/dialog";
-// import {
-//   Table,
-//   TableBody,
-//   TableCell,
-//   TableHead,
-//   TableHeader,
-//   TableRow,
-// } from "@/components/ui/table";
-// import { IContactMessage } from "@/models/ContactMessage.model";
-
-// // Type for API response errors
-// interface ErrorResponse {
-//   message?: string;
-//   success?: boolean;
-// }
-
-// export default function AdminMessagesPage() {
-//   const [messages, setMessages] = useState<IContactMessage[]>([]);
-//   const [isLoading, setIsLoading] = useState(true);
-//   const [isActionLoading, setIsActionLoading] = useState(false);
-//   const [isMessageDialogOpen, setIsMessageDialogOpen] = useState(false);
-//   const [selectedMessage, setSelectedMessage] =
-//     useState<IContactMessage | null>(null);
-
-//   const fetchMessages = useCallback(async () => {
-//     setIsLoading(true);
-//     try {
-//       const response = await axios.get("/api/contact");
-//       setMessages(response.data.contactMessages || []);
-//     } catch (error) {
-//       console.error("Failed to fetch contact messages:", error);
-//       const axiosError = error as AxiosError<ErrorResponse>;
-//       toast.error(
-//         axiosError.response?.data.message || "Failed to fetch contact messages."
-//       );
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   }, []);
-
-//   useEffect(() => {
-//     fetchMessages();
-//   }, [fetchMessages]);
-
-//   const handleToggleReadStatus = async (
-//     messageId: string,
-//     currentStatus: boolean
-//   ) => {
-//     setIsActionLoading(true);
-//     try {
-//       const response = await axios.patch(`/api/contact/${messageId}`, {
-//         isRead: !currentStatus,
-//       });
-//       toast.success(response.data.message);
-//       setMessages((prevMessages) =>
-//         prevMessages.map((message) =>
-//           message._id === messageId
-//             ? { ...message, isRead: !currentStatus }
-//             : message
-//         )
-//       );
-//     } catch (error) {
-//       console.error("Failed to update message status:", error);
-//       const axiosError = error as AxiosError<ErrorResponse>;
-//       toast.error(
-//         axiosError.response?.data.message || "Failed to update message status."
-//       );
-//     } finally {
-//       setIsActionLoading(false);
-//     }
-//   };
-
-//   const handleDeleteMessage = async (messageId: string) => {
-//     setIsActionLoading(true);
-//     try {
-//       const response = await axios.delete(`/api/contact/${messageId}`);
-//       toast.success(response.data.message);
-//       setMessages((prevMessages) =>
-//         prevMessages.filter((message) => message._id !== messageId)
-//       );
-//     } catch (error) {
-//       console.error("Failed to delete message:", error);
-//       const axiosError = error as AxiosError<ErrorResponse>;
-//       toast.error(
-//         axiosError.response?.data.message || "Failed to delete message."
-//       );
-//     } finally {
-//       setIsActionLoading(false);
-//     }
-//   };
-
-//   const handleMessageClick = (message: IContactMessage) => {
-//     setSelectedMessage(message);
-//     setIsMessageDialogOpen(true);
-//   };
-
-//   return (
-//     <>
-//       <div className="flex-1 flex flex-col p-4 md:p-6 lg:p-8">
-//         <div className="mb-6">
-//           <h1
-//             className="yeseva-one text-4xl font-bold mb-2 tracking-wide"
-//             style={{ color: "rgb(239, 167, 101)" }}
-//           >
-//             Contact Messages Management
-//           </h1>
-//           <p className="text-gray-400">
-//             Review, respond to, and manage user inquiries and feedback.
-//           </p>
-//         </div>
-//         <div className="rounded-md border border-[#efa765] bg-[#141f2d] text-white overflow-hidden">
-//           <div className="h-[400px] overflow-y-auto">
-//             <Table>
-//               <TableHeader className="sticky top-0 bg-[#1c2a3b] text-[#efa765]">
-//                 <TableRow>
-//                   <TableHead className="w-[150px] text-[#efa765] font-bold">
-//                     Customer
-//                   </TableHead>
-//                   <TableHead className="w-[200px] text-[#efa765] font-bold">
-//                     Email
-//                   </TableHead>
-//                   <TableHead className="text-[#efa765] font-bold">
-//                     Subject
-//                   </TableHead>
-//                   <TableHead className="text-[#efa765] font-bold">
-//                     Message
-//                   </TableHead>
-//                   <TableHead className="w-[120px] text-center text-[#efa765] font-bold">
-//                     Status
-//                   </TableHead>
-//                   <TableHead className="w-[150px] text-center text-[#efa765] font-bold">
-//                     Date
-//                   </TableHead>
-//                   <TableHead className="w-[100px] text-center text-[#efa765] font-bold">
-//                     Actions
-//                   </TableHead>
-//                 </TableRow>
-//               </TableHeader>
-//               <TableBody>
-//                 {isLoading ? (
-//                   <TableRow>
-//                     <TableCell colSpan={6} className="text-center py-10">
-//                       <div className="flex justify-center items-center">
-//                         <Loader2 className="h-8 w-8 animate-spin text-[#efa765]" />
-//                         <span className="ml-4 text-xl text-[#efa765]">
-//                           Loading messages...
-//                         </span>
-//                       </div>
-//                     </TableCell>
-//                   </TableRow>
-//                 ) : messages.length === 0 ? (
-//                   <TableRow>
-//                     <TableCell
-//                       colSpan={6}
-//                       className="text-center py-10 text-gray-400"
-//                     >
-//                       No contact messages found yet.
-//                     </TableCell>
-//                   </TableRow>
-//                 ) : (
-//                   messages.map((message) => (
-//                     <TableRow
-//                       key={message._id}
-//                       className="border-gray-700 hover:bg-[#1c2a3b]"
-//                     >
-//                       <TableCell className="font-medium text-white">
-//                         {message.name}
-//                       </TableCell>
-//                       <TableCell className="text-gray-300">
-//                         {message.email}
-//                       </TableCell>
-//                       <TableCell className="text-gray-400 truncate max-w-[200px] transition-colors">
-//                         {message.subject}
-//                       </TableCell>
-//                       <TableCell
-//                         className="text-gray-400 truncate max-w-[200px] cursor-pointer hover:text-[#efa765] transition-colors"
-//                         onClick={() => handleMessageClick(message)}
-//                       >
-//                         {message.message}
-//                       </TableCell>
-//                       <TableCell className="text-center">
-//                         <Badge
-//                           variant={message.isRead ? "default" : "secondary"}
-//                           className="px-3 py-1 text-sm"
-//                         >
-//                           {message.isRead ? "Read" : "Unread"}
-//                         </Badge>
-//                       </TableCell>
-//                       <TableCell className="text-gray-400 text-center text-sm">
-//                         {format(new Date(message.createdAt), "MMM dd, yyyy")}
-//                       </TableCell>
-//                       <TableCell className="text-center">
-//                         <div className="flex justify-center space-x-2">
-//                           <Button
-//                             variant={message.isRead ? "destructive" : "default"}
-//                             size="icon"
-//                             onClick={() =>
-//                               handleToggleReadStatus(
-//                                 message._id,
-//                                 message.isRead
-//                               )
-//                             }
-//                             disabled={isActionLoading}
-//                             className="h-8 w-8"
-//                             style={{
-//                               backgroundColor: message.isRead
-//                                 ? "#dc2626"
-//                                 : "#22c55e",
-//                             }}
-//                           >
-//                             {isActionLoading ? (
-//                               <Loader2 className="h-4 w-4 animate-spin" />
-//                             ) : message.isRead ? (
-//                               <Mail className="h-4 w-4" />
-//                             ) : (
-//                               <MailOpen className="h-4 w-4" />
-//                             )}
-//                             <span className="sr-only">
-//                               {message.isRead
-//                                 ? "Mark as Unread"
-//                                 : "Mark as Read"}
-//                             </span>
-//                           </Button>
-//                           <AlertDialog>
-//                             <AlertDialogTrigger asChild>
-//                               <Button
-//                                 variant="ghost"
-//                                 size="icon"
-//                                 disabled={isActionLoading}
-//                                 className="h-8 w-8 text-red-500 hover:bg-red-500/10"
-//                               >
-//                                 <Trash2 className="h-4 w-4" />
-//                                 <span className="sr-only">Delete</span>
-//                               </Button>
-//                             </AlertDialogTrigger>
-//                             <AlertDialogContent className="bg-gray-900 text-white border border-red-700">
-//                               <AlertDialogHeader>
-//                                 <AlertDialogTitle className="text-red-500">
-//                                   Are you absolutely sure?
-//                                 </AlertDialogTitle>
-//                                 <AlertDialogDescription className="text-gray-300">
-//                                   This action cannot be undone. This will
-//                                   permanently delete the message from your
-//                                   database.
-//                                 </AlertDialogDescription>
-//                               </AlertDialogHeader>
-//                               <AlertDialogFooter>
-//                                 <AlertDialogCancel className="bg-gray-700 text-white hover:bg-gray-600 border-none">
-//                                   Cancel
-//                                 </AlertDialogCancel>
-//                                 <AlertDialogAction
-//                                   onClick={() =>
-//                                     handleDeleteMessage(message._id)
-//                                   }
-//                                   className="bg-red-600 text-white hover:bg-red-700"
-//                                 >
-//                                   {isActionLoading ? (
-//                                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-//                                   ) : (
-//                                     "Delete"
-//                                   )}
-//                                 </AlertDialogAction>
-//                               </AlertDialogFooter>
-//                             </AlertDialogContent>
-//                           </AlertDialog>
-//                         </div>
-//                       </TableCell>
-//                     </TableRow>
-//                   ))
-//                 )}
-//               </TableBody>
-//             </Table>
-//           </div>
-//         </div>
-//       </div>
-
-//       <Dialog open={isMessageDialogOpen} onOpenChange={setIsMessageDialogOpen}>
-//         <DialogContent className="sm:max-w-[425px] bg-gray-900 text-white border border-[#efa765]">
-//           <DialogHeader>
-//             <DialogTitle className="text-[#efa765] text-2xl font-bold">
-//               Message from {selectedMessage?.name}
-//             </DialogTitle>
-//           </DialogHeader>
-//           <div className="text-gray-400">
-//             <div className="mb-2">
-//               <span className="font-bold text-gray-300">Email:</span>{" "}
-//               {selectedMessage?.email}
-//             </div>
-//             <div className="mb-4">
-//               <span className="font-bold text-gray-300">Subject:</span>{" "}
-//               {selectedMessage?.subject}
-//             </div>
-//           </div>
-//           <div className="bg-gray-800 p-4 rounded-md h-64 overflow-y-auto text-gray-200">
-//             {selectedMessage?.message}
-//           </div>
-//         </DialogContent>
-//       </Dialog>
-//     </>
-//   );
-// }
-
-
-
-
-
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
@@ -373,19 +41,15 @@ interface IContactMessage {
     subject: string;
     message: string;
     isRead: boolean;
-    createdAt: string; // Using string since date-fns formats it later
-    // Other fields like userId are omitted for brevity in mock interface
+    createdAt: string;
 }
 
-// Type for API response errors
 interface ErrorResponse {
   message?: string;
   success?: boolean;
 }
 
-// --- Utility Component for Statistics ---
-// Define the StatCard component within the file as required for single-file mandate
-const StatCard = ({ title, value, icon: Icon, color, bgColor }) => (
+const StatCard = ({ title, value, icon: Icon, color, bgColor }: any) => (
     <div className={`p-5 rounded-xl shadow-2xl border border-gray-700 ${bgColor} transition-all duration-300 hover:shadow-2xl hover:border-[#efa765]/70`}>
         <div className="flex items-center justify-between">
             <div>
@@ -433,7 +97,6 @@ export default function AdminMessagesPage() {
       color: "text-green-400",
       bgColor: "bg-[#141f2d]",
     },
-    // Removed "New Today (Mock)" stat
   ];
 
   const fetchMessages = useCallback(async () => {
@@ -630,10 +293,10 @@ export default function AdminMessagesPage() {
                       {/* Status Badge */}
                       <TableCell className="text-center">
                         <Badge
-                          className={`px-3 py-1 text-xs font-semibold shadow-md ${
+                          className={`px-3 py-1 text-xs shadow-md ${
                             message.isRead 
                                 ? "bg-green-600/20 text-green-400 border-green-600" 
-                                : "bg-red-600/20 text-red-400 border-red-600"
+                                : "bg-yellow-600/20 text-yellow-400 border-yellow-600"
                           } hover:opacity-80`}
                         >
                           {message.isRead ? "Read" : "New"}
@@ -659,7 +322,7 @@ export default function AdminMessagesPage() {
                             }
                             disabled={isActionLoading}
                             className={`h-8 w-8 border-none shadow-md transition-all ${
-                                message.isRead ? 'bg-red-500/10 text-red-400 hover:bg-red-500/20' : 'bg-green-500/10 text-green-400 hover:bg-green-500/20'
+                                message.isRead ? 'bg-green-500/10 text-green-400 hover:bg-green-500/20' : 'bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20'
                             }`}
                           >
                             {isActionLoading ? (
@@ -679,7 +342,7 @@ export default function AdminMessagesPage() {
                                 variant="outline"
                                 size="icon"
                                 disabled={isActionLoading}
-                                className="h-8 w-8 border-none text-gray-500 hover:text-red-500 hover:bg-gray-800/50 shadow-md transition-colors"
+                                className="h-8 w-8 border-none bg-gray-800/50 text-red-500 hover:text-red-500 hover:bg-gray-800/50 shadow-md transition-colors"
                               >
                                 <Trash2 className="h-4 w-4" />
                                 <span className="sr-only">Delete</span>

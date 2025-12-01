@@ -4,7 +4,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -32,17 +31,17 @@ const ShippingAddressForm: React.FC<ShippingAddressFormProps> = ({ onFormChange,
   });
 
   React.useEffect(() => {
-    const subscription = form.watch((value, { name, type }) => {
+    const subscription = form.watch((value) => {
       onFormChange(value as ShippingAddressInputs, form.formState.isValid);
     });
     return () => subscription.unsubscribe();
-  }, [form.watch, form.formState.isValid, onFormChange]);
+  }, [form.watch, form.formState.isValid, onFormChange, form]);
 
   useEffect(() => {
     if (initialData) {
       form.reset(initialData);
     }
-  }, [initialData, form.reset]);
+  }, [initialData, form.reset, form]);
 
 
   return (

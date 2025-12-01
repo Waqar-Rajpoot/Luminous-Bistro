@@ -556,44 +556,6 @@ const Chart = () => {
             </div>
           </div>
         </Card>
-        {/* Monthly Contact Messages Bar Chart */}
-        {/* <Card className="bg-gray-800 border-gray-700 text-white rounded-lg shadow-xl">
-          <CardHeader>
-            <CardTitle className="text-xl sm:text-2xl font-bold text-center text-[#f43f5e]">
-              <div className="flex items-center justify-center space-x-2">
-                <MessageCircle className="h-6 w-6 text-[#f43f5e]"/>
-                <span>Contact Messages Per Month</span>
-              </div>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="h-[300px] p-2">
-            <ResponsiveContainer width="100%" height="100%">
-              <RechartsBarChart
-                data={chartData}
-                margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
-              >
-                <XAxis
-                  dataKey="month"
-                  tickLine={true}
-                  tickMargin={10}
-                  axisLine={true}
-                  stroke="#a0aec0"
-                  tickFormatter={(value) => value.slice(0, 3)}
-                />
-                <YAxis stroke="#a0aec0" />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "#2d3748",
-                    border: "1px solid #4a5568",
-                    borderRadius: "8px",
-                  }}
-                  labelStyle={{ color: "#fff" }}
-                />
-                <Bar dataKey="contactMessages" fill="#f43f5e" radius={[4, 4, 0, 0]} />
-              </RechartsBarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card> */}
       </div>
     </>
   );

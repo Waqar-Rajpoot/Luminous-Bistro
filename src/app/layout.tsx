@@ -47,11 +47,6 @@ export default function RootLayout({
             {children}
             <Footer />
             <Toaster />
-            <script
-              id="omnidimension-web-widget"
-              async
-              src="https://backend.omnidim.io/web_widget.js?secret_key=08bd9baffef2509d3c0c2a1db12f57aa"
-            ></script>
           </body>
         </ImageKitProvider>
       </AuthProvider>

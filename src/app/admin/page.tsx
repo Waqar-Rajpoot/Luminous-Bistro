@@ -10,11 +10,11 @@ import axios, { AxiosResponse } from "axios";
 import Link from "next/link";
 import {
   Utensils,
-  Box, // For Reviews
-  MessageSquare, // For Contact Messages
-  CalendarCheck, // For Booked Tables
-  ListOrdered, // For Order Management
-} from "lucide-react"; // Import new icons
+  Box,
+  MessageSquare,
+  CalendarCheck,
+  ListOrdered,
+} from "lucide-react";
 import OverviewCards from "./components/OverviewCards";
 import ReviewsChart from "./components/Charts";
 import UserProfile from "@/components/user-dashboard/UserProfile";
@@ -27,7 +27,6 @@ interface DashboardStatsData {
   orders: number;
 }
 
-// Define the shape of the full API response
 interface ApiResponse<T> {
   success: boolean;
   message?: string;
@@ -83,8 +82,8 @@ export default function AdminDashboard() {
   return (
     <>
       <div className="min-h-screen p-6 rounded-xl sm:p-10 text-white font-sans">
-      <UserProfile user={user} />
         <div className="max-w-7xl mx-auto">
+        <UserProfile user={user} />
           <div className="text-center mb-10">
           </div>
           {error && (
@@ -179,7 +178,7 @@ export default function AdminDashboard() {
                 <p className="text-gray-300 text-lg">
                   View and manage customer feedback and ratings.
                 </p>
-              </CardContent>
+              </CardContent> 
             </Card>
           </Link>
 

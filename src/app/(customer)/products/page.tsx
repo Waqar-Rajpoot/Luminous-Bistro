@@ -45,7 +45,6 @@ const cartReducer = (state: any[], action: any) => {
   }
 };
 
-// Helper function to get category icons
 const getCategoryIcon = (category: string) => {
   switch (category) {
     case 'Fast Food': return <ChefHat className="h-6 w-6 text-[#EFA765]" />;
@@ -146,7 +145,7 @@ const ProductsPage = ({ groupedProducts, handleAddToCart, filterName, setFilterN
                   </CardHeader>
                   <CardContent className="p-4">
                     <CardTitle className="text-xl font-bold font-[Yeseve One]">{product.name}</CardTitle>
-                    <CardDescription className="mt-2 text-lg font-semibold text-[#EFA765] font-[Varela Round]">${product.price.toFixed(2)}</CardDescription>
+                    <CardDescription className="mt-2 text-lg font-semibold text-[#EFA765] font-[Varela Round]">RS: {product.price.toFixed(2)} PKR</CardDescription>
                   </CardContent>
                   <CardFooter className="p-4 flex items-center justify-between">
                     <Button

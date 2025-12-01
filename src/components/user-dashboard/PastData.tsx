@@ -241,7 +241,7 @@ const getBookingStatusBadge = (isConfirmed: any) => {
   return { className, text };
 };
 
-export const PastOrdersTable = ({ latestOrders }: any) => {
+export const PastOrdersTable = ({ allOrders }: any) => {
 
   return (
     <div className="flex flex-col h-full">
@@ -270,23 +270,23 @@ export const PastOrdersTable = ({ latestOrders }: any) => {
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-700">
-            {latestOrders.map((latestOrders: any) => {
-              const orderStatusBadge = getOrderStatusBadge(latestOrders.orderStatus);
-              const shippingBadge = getShippingProgressBadge(latestOrders.shippingProgress);
+            {allOrders.map((allOrders: any) => {
+              const orderStatusBadge = getOrderStatusBadge(allOrders.orderStatus);
+              const shippingBadge = getShippingProgressBadge(allOrders.shippingProgress);
               
               return (
                 <tr
-                  key={latestOrders._id}
+                  key={allOrders._id}
                   className="text-sm text-gray-300 hover:bg-slate-700 transition duration-150 cursor-pointer"
                 >
                   <td className="px-4 py-4 font-medium text-white">
-                    {latestOrders._id?.substring(0, 15) || "N/A"}
+                    {allOrders._id?.substring(0, 15) || "N/A"}
                   </td>
                   <td className="px-4 py-2">
-                    PKR {(latestOrders.totalAmount || 0).toFixed(2)}
+                    PKR {(allOrders.totalAmount || 0).toFixed(2)}
                   </td>
                   <td className="px-4 py-2">
-                    {new Date(latestOrders.createdAt).toLocaleDateString()}
+                    {new Date(allOrders.createdAt).toLocaleDateString()}
                   </td>
                   <td className="px-4 py-2">
                     <span
@@ -314,7 +314,7 @@ export const PastOrdersTable = ({ latestOrders }: any) => {
 
 // --- Past Bookings Table Component ---
 
-export const PastBookingsTable = ({ latestBookings }: any) => {
+export const PastBookingsTable = ({ allBookings }: any) => {
 
   return (
     <div className="flex flex-col h-full">
@@ -344,7 +344,7 @@ export const PastBookingsTable = ({ latestBookings }: any) => {
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-700">
-            {latestBookings.map((booking : any) => {
+            {allBookings.map((booking : any) => {
               const bookingStatusBadge = getBookingStatusBadge(booking.isConfirmed);
 
               return (

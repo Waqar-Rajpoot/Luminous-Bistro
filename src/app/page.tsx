@@ -1,8 +1,7 @@
-// app/page.tsx
-"use client"; // This component will run on the client-side
+"use client";
 
 import { Image } from "@imagekit/next";
-import React from "react"; // Import React for JSX
+import React from "react";
 import {
   IMAGEKIT_URL_ENDPOINT,
   aboutImage1Src,
